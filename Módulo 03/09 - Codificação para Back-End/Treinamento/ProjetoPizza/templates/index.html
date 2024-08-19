@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Lista De Pedidos</title>
+        </head>
+        <body>
+            <a href="{% url "pagina_cliente" %}">
+                <button>Cliente</button>
+            </a>
+
+            <a href="{% url "pagina_pedido" %}">
+                <button>Criar pedido</button>
+            </a>
+
+            <h2>
+                Lista De Pedidos
+            </h2>
+            <ul>
+                {% for x in pedidos %}
+
+                   <li>
+                     {{ x.sabor }} - {{ x.tamanho }} - {{ x.pedido }} - $ {{ x.preco }}
+                   </li>
+
+                {% endfor %}
+
+            </ul>
+            
+        </body>
+</html>

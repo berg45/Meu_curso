@@ -1,0 +1,10 @@
+body{
+    background: linear-gradient(to right, rgb(61, 237, 205), rgb(98, 192, 232), rgb(5, 146, 217));
+}
+p{
+    color: rgb(17, 1, 1);
+    font-size: 50px;
+}
+ul{
+    font-size: 30px;
+}

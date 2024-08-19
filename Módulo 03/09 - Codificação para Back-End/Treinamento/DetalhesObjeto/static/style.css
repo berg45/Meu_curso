@@ -1,0 +1,57 @@
+/* Reset de estilos básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #0a6fd4; /* Cor de fundo do cabeçalho */
+    padding: 10px 0; /* Espaçamento interno do cabeçalho */
+}
+header h2 {
+    color: #fbf9f9;
+    margin-left: 20px; /* Define uma margem à esquerda */
+    margin-right: 20px; /* Define uma margem à direita */
+    margin-top: 20px; /* Define uma margem acima */
+    margin-bottom: 10px;
+    
+}
+
+nav ul {
+    list-style-type: none; /* Remove os marcadores de lista */
+    text-align: center; /* Centraliza os itens do menu */
+}
+
+nav ul li {
+    display: inline; /* Exibe os itens horizontalmente */
+    margin: 0 10px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: #fbf9f9; /* Cor do texto dos links */
+    padding: 5px 10px; /* Espaçamento interno dos links */
+    border-radius: 5px; /* Borda arredondada nos links */
+    transition: background-color 0.3s; /* Transição suave de cor de fundo */
+}
+
+nav ul li a:hover {
+    background-color: #ddd; /* Cor de fundo ao passar o mouse */
+}
+
+h2{
+    display: flex;
+    align-items: center;
+}
+
+.pro{
+    margin-left: 20px; 
+    margin-right: 20px; 
+    margin-top: 20px; 
+    margin-bottom: 10px;
+}

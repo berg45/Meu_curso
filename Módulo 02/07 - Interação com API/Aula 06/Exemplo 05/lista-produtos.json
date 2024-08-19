@@ -1,0 +1,54 @@
+[
+    { 
+        "id": 1,
+        "nome": "Drone Dji Mini 2",
+        "img": ["https://cdn.hiconsumption.com/wp-content/uploads/2018/01/DJI-Mavic-Air-Drone-00.jpg",
+                "https://www.adorama.com/alc/wp-content/uploads/2020/11/dji-mini-2-drone-areghisjeoi5yw3-4hje45uyw-340gshe.jpg",
+                "https://th.bing.com/th/id/OIP.Q7R_mtaFOPUrWzUtV8HPeAHaEu?pid=ImgDet&w=60&h=60&c=7&dpr=1,3&rs=1",
+                "https://th.bing.com/th/id/OIP.VgKALivZJ_kWDaWtmNTIpgHaEw?pid=ImgDet&w=60&h=60&c=7&dpr=1,3&rs=1"
+        ],
+        "descricao": "Um drone para voçê voar por ai.",
+        "valorComDesconto": 1699,
+        "valorSemDesconto": 2000
+    },
+    {
+        "id": 2,
+        "nome": "ventilador Arno Turbo",
+        "img": ["https://www.efacil.com.br/wcsstore/ExtendedSitesCatalogAssetStore/Imagens/1000/2217615_01.jpg",
+                "https://www.efacil.com.br/wcsstore/ExtendedSitesCatalogAssetStore/Imagens/1000/2217615_03.jpg",
+                "https://th.bing.com/th/id/OIP.gNHJ40HnjSHsMPInlT0T0AHaHa?pid=ImgDet&w=60&h=60&c=7&dpr=1,3&rs=1",
+                "https://th.bing.com/th/id/OIP.3GTZnv3f0RPj_Tb2-mRbHAHaHa?pid=ImgDet&w=60&h=60&c=7&dpr=1,3&rs=1"
+        ],
+        "descricao": "Um Ventilador para mandar embora o calor.",
+        "valorComDesconto": 120,
+        "valorSemDesconto": 155
+    },
+
+    {
+        "id": 3,
+        "nome": "Tv 43 Smart Samsung ",
+        "img": ["https://cdn1.smartprix.com/rx-iDkPTZDHt-w1200-h1200/samsung-43nu6100-43.jpg",
+                "https://i1.wp.com/mtcfactoryoutlet.com/wp-content/uploads/2018/10/12471899_2.jpg?ssl=1",
+                "https://th.bing.com/th/id/R.dec46e7ff0bbfb8a1d2864f966832c84?rik=qbSud5qTdPbx3A&pid=ImgRaw&r=0",
+                "https://www.laptopsdirect.co.uk/Images/UE32T5300CKXXU_7_Supersize.jpg?v=19"
+        ],
+        "descricao": "Imagem de cinema em casa.",
+        "valorComDesconto": 1599,
+        "valorSemDesconto": 2000
+    },
+
+    {
+        "id": 4,
+        "nome": "Nootebook Lenovo Ideapad",
+        "img":["https://www.bhphotovideo.com/images/images2500x2500/lenovo_81mv00mbus_ideapad_s145_celeron_4205u_1542747.jpg",
+               "https://th.bing.com/th/id/OIP.eATwoVdZiRxbyEX623hJagHaEK?pid=ImgDet&w=60&h=60&c=7&dpr=1,3&rs=1",
+               "https://www.tunisianet.com.tn/258252-large/pc-portable-lenovo-ideapad-3-15ada6-ryzen-3-3250u-8-go-512-go-ssd-gris.jpg",
+               "https://th.bing.com/th/id/OIP.0-fmuo5qsNaydM4rVVxOiQHaEK?pid=ImgDet&w=60&h=60&c=7&dpr=1,3&rs=1"
+        ],
+        "descricao": "Leve,compacto e otimo desempenho.",
+        "valorComDesconto": 2500,
+        "valorSemDesconto": 3000
+    }
+
+   
+]

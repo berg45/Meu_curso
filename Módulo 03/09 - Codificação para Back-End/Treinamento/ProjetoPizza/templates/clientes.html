@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <button type="button" class="button-link" onclick="history.back()">Voltar</button>
+        <h3>Formulário de Clientes</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ formulario.as_p }}
+            <button type="submit">Salvar</button>
+            <button type="button" class="button-link" onclick="history.back()">Cancelar</button>           
+        </form>
+        
+        <h3>
+            Lista De Pedidos:
+        </h3>
+        <ul>
+            {% for cliente in clientes %}
+                <li rel="{{cliente.id}}">{{cliente.nome }} - {{ cliente.endereco }}  </li>
+            {% endfor %}
+        </ul>
+
+        
+    </body>
+</html>

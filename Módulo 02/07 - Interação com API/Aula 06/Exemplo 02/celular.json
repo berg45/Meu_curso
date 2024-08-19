@@ -1,0 +1,57 @@
+[
+    {
+        "img":"https://fdn2.mobgsm.com/vv/pics/samsung/samsung-galaxy-s22-ultra-5g-2.jpg",
+        "marca": "samsung",
+        "preço": "R$5.990",
+        "modelo": "S23 utra",
+        "armazenamento": "250 gb",
+        "memoriaRam": "16 gb"
+        
+    },
+
+    {
+        "img": "https://droidafrica.net/wp-content/uploads/2022/09/Apple-iPhone-14-Pro-Max-768x724.jpg",
+        "marca": "Apple",
+        "preço": "R$7.998",
+        "modelo": "iphone 14 pro max",
+        "armazenamento": "500 gb",
+        "memoriaRam": "16 gb"
+    },
+
+    {
+        "img": "https://i5.walmartimages.com.mx/mg/gm/3pp/asr/1cd34bc1-33e3-42f1-a9c4-1c5a045f63b7.5ed2bcf113e17eedb20651e9ba23c6db.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+        "marca": "xiaomi",
+        "preço": "R$1.989",
+        "modelo": "redmi note 12 pro",
+        "armazenamento": "128 gb",
+        "memoriaRam": "8 gb"
+    },
+    {
+        "img": "https://smarttek.pe/wp-content/uploads/2021/01/samsung-s20-fe-azul-2-1.jpg",
+        "marca": "samsung",
+        "preço": "R$1.999",
+        "modelo": "S20 FE",
+        "armazenamento": "128 gb",
+        "memoriaRam": "6 gb"
+        
+    },
+    {
+        "img": "https://img-new.cgtrader.com/items/2657112/38c896dbd5/iphone-12-pro-max-graphite-3d-model-obj-fbx-c4d-blend.jpg",
+        "marca": "iphone",
+        "preço": "R$3.689",
+        "modelo": "12 pro max",
+        "armazenamento": "128 gb",
+        "memoriaRam": "6 gb"
+        
+    },
+    {
+        "img": "https://falabella.scene7.com/is/image/FalabellaCO/gsc_119597069_2402137_1?wid=800&hei=800&qlt=70",
+        "marca": "poco",
+        "preço": "R$2.689",
+        "modelo": "X5 pro 5G",
+        "armazenamento": "256 gb",
+        "memoriaRam": "8 gb"
+
+    }
+
+]

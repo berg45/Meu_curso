@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <h3>Formulário Deposito </h3>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ formulario.as_p }}
+            <button type="submit">Salvar</button>
+            <button type="reset" onclick="resetForm()">Cancelar</button>
+        </form>
+        
+        <h3>
+            Lista de Produtos:
+        </h3>
+        <ul>
+            {% for x in depositos %}
+                <li>{{ x.nome_produto }} - {{ x.quantidade }} </li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>

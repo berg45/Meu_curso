@@ -1,0 +1,12 @@
+<!-- Formulário de Criação e Edição (item_form.html) -->
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{% if object %}Editar Item{% else %}Criar Novo Item{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button class="btn btn-md btn-success" type="submit">{% if object %}Atualizar{% else %}Criar{% endif %}</button>
+        <a class="btn btn-warning" href="{% url 'item-list' %}" role="button">voltar</a>
+   </form>
+{% endblock %}

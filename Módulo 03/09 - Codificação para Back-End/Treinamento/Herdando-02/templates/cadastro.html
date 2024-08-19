@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %} 
+<p>
+    Página de Cadastro
+    
+</p>
+
+{% endblock %}
+
+{% block conteudo %}
+<ul>
+    {% for Cadastro in pessoas %}
+        <li>
+            {{ Cadastro.nome }} 
+            <br>
+            {{ Cadastro.email }}
+            <br>
+            {{"Cadastro.cpf"}}
+            <br>
+            <br>
+            {{"Cadastro.crear_senha"}}
+            <br>
+            {{"Cadastro.confirmar_senha"}}
+        </li>
+    {% endfor %}
+
+</lu>
+  
+{% endblock %}
+

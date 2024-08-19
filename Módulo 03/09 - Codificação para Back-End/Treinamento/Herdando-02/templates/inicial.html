@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block titulo %} 
+<p> 
+    Bem-vindo a Loja! 
+</p> 
+{% endblock %}
+
+
+{% block conteudo %}
+    <ul>
+        {% for Movel in inicial %}
+            <li>
+                {{ Movel.nome }} 
+                <br>
+                {{ Movel.categoria }}
+                <br>
+                <img src= "{{Movel.imagem.url}}" height="200" width="150">
+                <br>
+                {{"Movel.preço"}}
+            </li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

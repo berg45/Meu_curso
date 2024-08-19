@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <p>
+            Lista de Pacientes:
+        </p>
+        <ul>
+            {% for x in pacientes %}
+                <li>{{ x.nome }} - <a href="{% url 'pg_editar_paciente' x.id %}">Editar paciente</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

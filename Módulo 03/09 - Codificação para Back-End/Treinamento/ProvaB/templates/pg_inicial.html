@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <body>
+        <p>
+            Esta é a página inicial
+        </p>
+
+	<a href="{% url 'pagina_home' %}">
+        <button type="button">Home</button>
+    </a>
+    <br>
+    <a href="{% url 'pagina_cadastro' %}">
+        <button type="button">Página Cadastro</button>
+    </a>
+    <br>
+    <a href="{% url 'pagina_login' %}">
+        <button type="button">Página Login</button>
+    </a>
+    </body>
+</html>

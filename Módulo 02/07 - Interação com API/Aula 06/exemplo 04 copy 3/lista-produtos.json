@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nome": "Ovo Cacau Show",
+        "img": "https://th.bing.com/th/id/OIP.hf9V5-OrBHPnoMcFp7VCoAHaHa?rs=1&pid=ImgDetMain",
+        "descricao":"Ovo trufado Maracujá 400g" ,
+        "valorComDesconto": 199.99,
+        "valorSemDesconto": 211.94
+    },
+
+    {
+        "id": 2,
+        "nome": "Ovo Cacau Show",
+        "img": "https://http2.mlstatic.com/D_NQ_NP_2X_785820-MLB41745088426_052020-F.jpg",
+        "descricao":"7 chocolates 400g trufado" ,
+        "valorComDesconto":200.98,
+        "valorSemDesconto":219.94
+    },
+
+    {
+        "id": 3,
+        "nome": "Ovo Cacau Show",
+        "img": "https://http2.mlstatic.com/D_NQ_NP_916755-MLB54694738849_032023-O.webp",
+        "descricao":"Dreams Mil folhas 400g trufado" ,
+        "valorComDesconto":239.94,
+        "valorSemDesconto": 249.94
+    },
+
+    {
+        "id": 4,
+        "nome": "Ovo Cacau Show",
+        "img": "https://http2.mlstatic.com/D_NQ_NP_968615-MLB73975916666_012024-O.webp",
+        "descricao":"Brigadeiro 300g trufado" ,
+        "valorComDesconto":198.98,
+        "valorSemDesconto":211.94
+    }
+
+]    

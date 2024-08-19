@@ -1,0 +1,46 @@
+[
+    {
+        "img": "https://cdn.motor1.com/images/mgl/wzW0Q/s1/chevrolet-onix-plus-premier-2020.jpg",
+        "marca": "Chevrolet",
+        "modelo": "Onix plus",
+        "ano": 2023,
+        "opcionais":"vidro,ar,trava"
+
+    },
+
+    {
+        "img": "https://tse3.mm.bing.net/th?id=OIP.IcwRMXWQwUphHmKBO5ouDQHaEK&pid=Api&P=0&h=180",
+        "marca": "Fiat",
+        "modelo": "Argo",
+        "ano": 2022,
+        "opcionais": "vidro,ar,trava"
+
+    },
+
+    {
+        "img": "https://cdn.motor1.com/images/mgl/NGZpEy/s1/2023-toyota-gr-corolla-circuit-edition-exterior.jpg",
+        "marca": "Toyota",
+        "modelo": "Corola",
+        "ano": 2023,
+        "opcionais": "vidro,ar,trava"
+
+    },
+
+    {
+        "img": "https://s3.sa-east-1.amazonaws.com/titulares.ar/wp-content/uploads/2022/02/23042011/nissan-frontier-pro4x-750x422.jpg",
+        "marca": "Nissan",
+        "modelo": "Frontier",
+        "ano": 2023,
+        "opcionais": "vidro,ar,trava"
+
+    },
+
+    {
+        "img": "https://tse2.mm.bing.net/th?id=OIP.X4P86bMF4mH868KGcZYl1QHaEK&pid=Api&P=0&h=180",
+        "marca": "Renout",
+        "modelo": "logan",
+        "ano": 2020,
+        "opcionais": "vidro,ar,trava"
+
+    }
+]

@@ -1,0 +1,86 @@
+header{
+    background-color: #0a0a0a;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+    width: 100%;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+header nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+li{
+    list-style-type: none;
+}
+header nav li h3{  
+    border: 2px solid rgb(249, 210, 16);
+    background-color: #eadb12;
+    font-size: 35px;
+    color: #060606;
+}
+
+header nav li a {
+    margin: 0 9rem;
+    text-decoration: none;
+    color: #eadb12;
+    font-size: 25px;
+}
+
+
+.lista-card{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 5px;
+    margin-top: 10px;
+
+}
+
+
+.card{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: rgb(8, 8, 7);
+    background-color: #fcf9f9;
+    align-items: center;
+
+}
+.card h3{
+    
+    color: #0a0a08;
+}
+
+.valorCom{
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.valorSem{
+    color: red;
+    font-size: 15px;
+    text-decoration: line-through;
+}
+
+footer {
+    background-color: #282222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+
+footer p {
+    margin: 0;
+}

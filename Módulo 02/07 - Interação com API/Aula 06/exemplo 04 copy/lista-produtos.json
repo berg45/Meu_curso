@@ -1,0 +1,38 @@
+[
+    { 
+        "id": 1,
+        "nome": "Drone Dji Mini 2",
+        "img": "https://cdn.hiconsumption.com/wp-content/uploads/2018/01/DJI-Mavic-Air-Drone-00.jpg",
+        "descricao": "Um drone para voçê voar por ai.",
+        "valorComDesconto": 1699,
+        "valorSemDesconto": 2000
+    },
+    {
+        "id": 2,
+        "nome": "ventilador Arno Turbo",
+        "img": "https://www.efacil.com.br/wcsstore/ExtendedSitesCatalogAssetStore/Imagens/1000/2217615_01.jpg",
+        "descricao": "Um Ventilador para mandar embora o calor.",
+        "valorComDesconto": 120,
+        "valorSemDesconto": 155
+    },
+
+    {
+        "id": 3,
+        "nome": "Tv 43 Smart Samsung ",
+        "img": "https://cdn1.smartprix.com/rx-iDkPTZDHt-w1200-h1200/samsung-43nu6100-43.jpg",
+        "descricao": "Imagem de cinema em casa.",
+        "valorComDesconto": 1599,
+        "valorSemDesconto": 2000
+    },
+
+    {
+        "id": 4,
+        "nome": "Nootebook Lenovo Ideapad",
+        "img":"https://www.bhphotovideo.com/images/images2500x2500/lenovo_81mv00mbus_ideapad_s145_celeron_4205u_1542747.jpg",
+        "descricao": "Leve,compacto e otimo desempenho.",
+        "valorComDesconto": 2500,
+        "valorSemDesconto": 3000
+    }
+
+   
+]

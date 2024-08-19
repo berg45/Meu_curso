@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+
+{% block titulo %}
+<header>
+    <nav class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Livros</a></li>
+            <li><a href="#">Autores</a></li>
+            <li><a href="#">Promoções</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div style="padding: 20px;">
+    <h1 id="inicio">Bem-vindo à Livraria Berg</h1>
+    <p>Aqui você encontra uma vasta seleção de livros dos mais variados gêneros.</p>
+
+    <h2 id="livros">Nossos Livros</h2>
+    <p>Explore nossa coleção de best-sellers e clássicos.</p>
+
+
+</div>
+{% endblock %}
+
+
+{% block conteudo %}
+    {% for Livros in produtos %}
+        <li>{{ Livros.titulo_livro }} - {{ Livros.nome_autor }}
+            <br>
+
+            <img src="{{Livros.imagem.url}} " height=100 width=90>
+            <br> 
+
+            {{Livros.valor}}
+        </li>
+    {% endfor %}
+{% endblock %}
+

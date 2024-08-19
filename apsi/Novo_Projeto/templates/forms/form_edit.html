@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Editar Cliente </h1>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'form_list' %}">
+                <button class=" btn btn-md btn-primary">
+                    Ver Lista
+                </button>
+            </a>
+        </div>
+    </div>
+    <form method="post"  >
+        {% csrf_token %}
+        <div class="row p-5">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" class="form-control" id="name" placeholder="SEU NOME" name="name" value="{{cliente.name}}"></input>
+                </div>           
+                <div class="form-group">
+                    <label for="cpf_cnpj">CPF_CNPJ</label>
+                    <input type="text" class="form-control" id="cpf_cnpj" placeholder="CPF OU CNPJ" name="cpf_cnpj" valor="{{cliente.cpf_cnpj}}"></input>
+                    {% for error in form.cpf_cnpj.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="rg_ie">RG OU Ie</label>
+                    <input type="text" class="form-control" id="rg_ie" placeholder="RG OU Ie" name="rg_ie" value="{{cliente.rg_ie}}"></input>
+                    {% for error in form.rg_ie.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="email">
+                    <label for="email">EMAIL</label>
+                    <input type="text" class="form-control" id="email" placeholder="EMAIL" name="email" value="{{cliente.email}}"></input>
+                    {% for error in form.email.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="zip_code">CEP</label>
+                    <input type="text" class="form-control" id="zip_code" placeholder="CEP" name="zip_code" value="{{cliente.zip_code}}"></input>
+                    {% for error in form.zip_code.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="address">Endereço</label>
+                    <input type="text" class="form-control" id="address" placeholder="Endereço" name="address" value="{{cliente.address}}"></input>
+                    {% for error in form.address.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="number">Número</label>
+                    <input type="text" class="form-control" id="number" placeholder="Número" name="number" value="{{cliente.number}}"></input>
+                    {% for error in form.number.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="neighborhood">Bairro</label>
+                    <input type="text" class="form-control" id="neighborhood" placeholder="Bairro" name="neighborhood" value="{{cliente.neighborhood}}"></input>
+                    {% for error in form.neighborhood.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="city">Cidade</label>
+                    <input type="text" class="form-control" id="city" placeholder="Cidade" name="city" value="{{cliente.city}}"></input>
+                    {% for error in form.city.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="state">Estato</label>
+                    <input type="text" class="form-control" id="state" placeholder="Estado" name="state" value="{{cliente.state}}"></input>
+                    {% for error in form.state.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+              
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">Salva</button>
+                <a class="btn btn-warning" href="{% url 'item-list' %}" role="button">voltar</a>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+{% endblock %}
+
+

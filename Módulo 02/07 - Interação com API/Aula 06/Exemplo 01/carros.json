@@ -1,0 +1,26 @@
+[
+    {
+        "modelo": "monza",
+        "marca": "chevrolet",
+        "ano": 1995,
+        "cor": "vinho"
+    },
+
+    {
+        "modelo": "argo",
+        "marca": "fiat",
+        "ano": 2020,
+        "cor": "branco"
+        
+    },
+
+    {
+        "modelo": "hb20",
+        "marca": "hyunda",
+        "ano": 2023,
+        "cor": "preto"
+        
+    }
+
+
+]

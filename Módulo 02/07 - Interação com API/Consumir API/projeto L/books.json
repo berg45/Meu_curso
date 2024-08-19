@@ -1,0 +1,38 @@
+[
+    {
+      "title": "Dom Quixote",
+      "author": "Miguel de Cervantes",
+      "price": "$10",
+      "image": "https://th.bing.com/th/id/OIP.kjnKGEViFLYxTjQR9oI-0QHaK8?rs=1&pid=ImgDetMain",
+      "category": "ficção"
+    },
+    {
+      "title": "Orgulho e Preconceito",
+      "author": "Jane Austen",
+      "price": "$12",
+      "image": "https://img.wook.pt/images/orgulho-e-preconceito-jane-austen/MXwxNTU2MDY1MXwxMTA1NDA0OXwxMzkxOTkwNDAwMDAw/500x",
+      "category": "ficção"
+    },
+    {
+      "title": "Cem Anos de Solidão",
+      "author": "Gabriel García Márquez",
+      "price": "$15",
+      "image": "https://th.bing.com/th/id/R.dadc528c8178bddf6d3104415dab47de?rik=9zsbuOytFeKjig&riu=http%3a%2f%2fstatic.fnac-static.com%2fmultimedia%2fPT%2fimages_produits%2fPT%2fZoomPE%2f4%2f1%2f3%2f9789722000314.jpg&ehk=tJQP7bAkoucPC%2b0aNA4RBeil%2f30HnQQyMxtewLxIkYM%3d&risl=&pid=ImgRaw&r=0",
+      "category": "ficção"
+    },
+    {
+      "title": "A Origem das Espécies",
+      "author": "Charles Darwin",
+      "price": "$18",
+      "image": "https://th.bing.com/th/id/OIP.Tvxwekm__fEB1tvT7TOKagHaKu?rs=1&pid=ImgDetMain",
+      "category": "Não Ficção"
+    },
+    {
+      "title": "O Universo em uma Casca de Noz",
+      "author": "Stephen Hawking",
+      "price": "$20",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41HWFKZe1zL.jpg",
+      "category": "Não Ficção"
+    }
+  ]
+  

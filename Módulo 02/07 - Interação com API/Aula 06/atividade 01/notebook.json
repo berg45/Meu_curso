@@ -1,0 +1,57 @@
+[
+    {
+        "img": "https://i5.walmartimages.com/asr/63f44296-5453-48d6-ae61-436e43e9d54b.a7147f6d720cd8f0c5de875f8316ca26.jpeg",
+        "marca": "Samsung",
+        "modelo": "Galax Book2",
+        "processador": "core i5",
+        "valor": 2.999
+    },
+
+    {   
+        "img": "https://i5.walmartimages.com/asr/013d5fef-d839-4429-848f-79c2cc7db13a.cd3e7a3d551debf5d9366cbe1f001771.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
+        "marca": "Lenovo",
+        "modelo": "ideapad 3i",
+        "processador": "ryzen7",
+        "valor": 2.585
+    },
+
+    {
+        "img":"https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/MacBook_Air7035.jpg",
+        "marca": "Apple",
+        "modelo": "macBook air",
+        "processador": "M1",
+        "valor": 5.699
+    },
+
+    {
+        "img":"https://sgp1.digitaloceanspaces.com/awe/itech/items/Acer_Nitro_5_i5_laptop_tDtgYKV.jpg",
+        "marca": "Acer",
+        "modelo": "gamer nitro 5",
+        "processador": "core i5",
+        "valor": 4.599 
+    },
+
+    {
+        "img":"https://d3ddx6b2p2pevg.cloudfront.net/Custom/Content/Products/10/64/1064878_notebook-vaio-fe14-vjfe41f11x-b0411h-intel-core-i3-8130u-windows-10-home-1tb-hdd-4gb-ram-tela-14-full-hd-chumbo_z2_637290336452699279.jpg",
+        "marca": "Vaio",
+        "modelo": "FE14",
+        "processador": "core i5",
+        "valor": 3.599 
+    },
+
+    {
+        "img":"https://i1.wp.com/laptopmedia.com/wp-content/uploads/2020/01/2-104-e1587727646974.jpg?fit=1500%2C1140&ssl=1",
+        "marca": "Asus",
+        "modelo": "VivoBook",
+        "processador": "core i5",
+        "valor": 2.259 
+    },
+
+    {   
+        "img": "https://i5.walmartimages.com/asr/013d5fef-d839-4429-848f-79c2cc7db13a.cd3e7a3d551debf5d9366cbe1f001771.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
+        "marca": "Lenovo",
+        "modelo": "ideapad 3i",
+        "processador": "core i5",
+        "valor": 2.899
+    }
+]

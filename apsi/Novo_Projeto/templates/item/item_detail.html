@@ -1,0 +1,17 @@
+<!-- Detalhes do Item (item_detail.html) -->
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ object.nome }}</h2>
+    <p>{{ object.descricao }}</p>
+    <p>Preço: {{ object.preco }}</p>
+    <p>Criado em: {{ object.criado_em }}</p>
+    <a href="{% url 'item-edit' object.pk %}">
+        <button class="btn btn-sm btn-primary">Editar</button>
+    </a>
+    <a href="{% url 'item-delet' object.pk %}">
+        <button class="btn btn-sm btn-danger">Excluir</button>
+    </a>
+
+
+{% endblock %}
+ 

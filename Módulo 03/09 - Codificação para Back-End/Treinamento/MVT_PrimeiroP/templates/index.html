@@ -1,0 +1,18 @@
+{% load static %}
+<HTML>
+    <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <P>
+            Minha lista de Produtos:
+        </P>
+        <a href="{% url 'pagina_cadastro' %}">Cadastro</a>
+        <ul>
+            {% for x in produtos %}
+                <li>{{ x.nome_produto }} - R$ {{ x.valor_produto }} - <img src={{x.foto.url}}></li>
+            {% endfor %}6
+
+        </ul>
+    </body>
+</HTML>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedidos</title>
+</head>
+<body>
+    <h1>Pedidos</h1>
+    <a href="{% url 'add_pedido' %}">
+        <button>Adicionar Pedido</button>
+    </a>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>{{ pedido }} - Cliente: {{ pedido.cliente.nome }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'lista_clientes' %}">
+        <button>Ver Clientes</button>
+    </a>
+</body>
+</html>

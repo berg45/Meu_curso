@@ -1,0 +1,15 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    
+    <body>
+        <h2>
+            Berg Livraria
+        </h2>
+
+        {% block titulo %} {% endblock %}
+
+        {% block conteudo %} {% endblock %}
+
+    </body>
+</html>

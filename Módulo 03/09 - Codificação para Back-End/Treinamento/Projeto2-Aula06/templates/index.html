@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <h1>
+            Minha lista de Produtos:
+        </h1>
+        <ul>
+            {% for x in produtos %}
+                <li>{{ x.nome_produto }} - R$ {{ x.valor_produto }} - <img src="{{x.imagem_produto.url}}" width="70" height="50"></li>
+            {% endfor %}
+        </ul>
+        <a href="{% url "pagina_login" %}">Página login</a>
+    </body>
+</html>

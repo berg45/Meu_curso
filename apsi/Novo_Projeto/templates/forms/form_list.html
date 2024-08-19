@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>lista de Dados Inseridos Pelo Formulario</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Lista de Clientes</h2>
+        </div>
+        <div class="col-md-2">
+            <a class="nav-link" href="{% url 'formulario' %}"><button class="btn btn-md btn-success">Criar Novo item</button></a>
+        </div>
+    </div>
+    <thead>
+        <tr>
+            <th scope="col">nome</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in cliente %}
+        <tr>
+            <td>
+                <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'form_detail' cliente.pk %}">{{ cliente.name }}</a>
+            </td>
+            <td>
+                <ul class="nav">
+                    <li style="padding-right: 1%;">
+                         <a href="{% url 'form_edit' cliente.pk%}">
+                            <button class="btn btn-sm btn-primary">Editar</button>
+                        </a>  
+                    </li>
+                        <a href="{% url "form_delete" cliente.pk %}">
+                            <button class="btn btn-sm btn-danger">Excluir
+
+                            </button>
+                        </a>
+               </ul>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>     
+<a class="btn btn-warning" href="{% url 'formulario' %}" role="button">voltar</a>  
+{% endblock %}

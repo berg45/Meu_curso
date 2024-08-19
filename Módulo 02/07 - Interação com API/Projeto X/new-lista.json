@@ -1,0 +1,86 @@
+[
+    {
+        "id": 7,
+        "nome": "Cama Box",
+        "img": [
+                "https://th.bing.com/th/id/R.206f10ebd57be71fd3326ed67103f8d7?rik=yvOf2Xeuk7JDCg&riu=http%3a%2f%2fi.mlcdn.com.br%2f1500x1500%2fcama-box-casal-box-colchao-umaflexmola-55cm-de-altura-joop-219268600.jpg&ehk=08Gt3cuzsFgaK24pkr%2bk7660DRI%2feZXakwcsQykHNe0%3d&risl=&pid=ImgRaw&r=0",
+                "https://www.ofertinha.com.br/wp-content/uploads/2017/10/qq-2.jpg",
+                "https://www.ofertinha.com.br/wp-content/uploads/2018/12/xx-50.jpg"
+               ],
+        "descricao": "Cama Box Casal cm  Branco/Cinza",
+        "valorComDesconto": 1059,
+        "valorSemDesconto": 1299, 
+        "dados": "Uma cama conjugal para casal com largura de 190cm por 200cm de comprimento"
+        
+    },
+
+    {
+        "id": 8,
+        "nome": "Cozinha",
+        "img": ["https://1.bp.blogspot.com/-8Hid0QZwb1E/XcX-ql_RLsI/AAAAAAAAAQY/oTonksEO_hYvcM8Tom3kod40kk_IePURwCNcBGAsYHQ/s640/moveis-planejados.jpg",
+                "https://th.bing.com/th/id/R.7fc644f1c9dbeefc215f95711aad1652?rik=KkHB5z8QZUIt8Q&pid=ImgRaw&r=0",
+                "https://cdn.leroymerlin.com.br/products/cozinha_completa_livia_9_portas_1_gaveta_teka_grafite_panor_1571478829_bdf2_600x600.jpg"
+               ],
+        "descricao": "Cozinha planejada moderna com cores neutras",
+        "valorComDesconto": 1959,
+        "valorSemDesconto": 2100, 
+        "dados": "Uma cozinha planejada com armarios de embutir ,balcão em mamore e com gavetas deslizantes"
+        
+    },
+
+    {
+        "id": 9,
+        "nome": "Guarda roupas",
+        "img": ["https://images.madeiramadeira.com.br/product/images/47260399-guarda-roupa-casal-8-espelhos-2-portas-de-correr-gallant-zanzini-7899699821118-1_zoom-1500x1500.jpg",
+                "https://th.bing.com/th/id/R.85417fa7f069897cdf590f1af1361c8f?rik=IypFDbPuCxmhuQ&pid=ImgRaw&r=0",
+                "https://th.bing.com/th/id/OIP.c4Bg6EdkxCpp4VUh8bnDIQHaHa?pid=ImgDet&w=474&h=474&rs=1"
+               ],
+        "descricao": "Guarda super grande",
+        "valorComDesconto": 1659,
+        "valorSemDesconto": 2059, 
+        "dados": "6 portas ,sendo duas deslizantes com um grande espelho "
+        
+    },
+
+    {
+        "id": 10,
+        "nome": "Tv Samsung",
+        "img": ["https://compresuatv.com.br/wp-content/uploads/2018/01/Smart-TV-LED-55-SUHD-4K-Curva-Samsung-55KS7500-com-Pontos-Qu%C3%A2nticos-HDR-1000-Tizen-Quadcore-One-Control-Design-360%C2%B0-Ultra-Slim-HDMI-e-USB-2-e1574793490564.jpg",
+                "https://th.bing.com/th/id/OIP.2SNosr_-IsSmIGHlo9tJDQHaFr?pid=ImgDet&w=474&h=363&rs=1",
+                "https://th.bing.com/th/id/OIP.2yg5sd0hCB5-yTHs63m8BAHaFr?pid=ImgDet&w=474&h=363&rs=1"
+               ],
+        "descricao": "TV tela curva de 65 polegadas 8k",
+        "valorComDesconto": 4600,
+        "valorSemDesconto": 3999, 
+        "dados": "Seus filmes e series em alta definição e uma experiência incrivel com sua tela curva de 65 polegadas"
+      
+    },
+
+    {
+        "id": 11,
+        "nome": "Samsung S23 ultra",
+        "img": ["https://www.worldshop.eu/medias/img/8935663206430_w1500_z_2014514609/samsung-galaxy-s23-ultra-smartphone-512gb-phantom-black.jpeg",
+                "https://www.01net.com/app/uploads/2023/01/samsung-galaxy-s23-ultra-prise-en-main.jpg",
+                "https://www.digitaltrends.com/wp-content/uploads/2023/02/Galaxy-S23-Ultra-S-Pen-Menu-1.jpg?fit=3000%2C2000&p=1"
+               ],
+        "descricao": "Samsung Galaxy S23 Ultra 5G 512 GB",
+        "valorComDesconto": 5998,
+        "valorSemDesconto": 6289, 
+        "dados": "Ele possui 256GB de armazenamento interno para guardar diversos aplicativos, fotos, vídeos e jogos, 12GB de memória RAM e processador Qualcomm Snapdragon 8 Gen 2 que evita aquelas travadas durante o uso. A tela dele é Dynamic AMOLED 2X de 6,8"
+        
+    },
+
+    {
+        "id": 12,
+        "nome": "Notebook lenovo",
+        "img": ["https://images.tcdn.com.br/img/img_prod/1066780/notebook_lenovo_gaming_3i_intel_i5_10a_gtx1650_4gb_8gb_ram_256gb_ssd_15_6_linux_4777_2_f44e5d4fccc20b5617601d6a5f403120_20211203085437.jpg",
+                "https://th.bing.com/th/id/OIP.zQxQvaDQJbcBse6DASvd0wHaHa?pid=ImgDet&w=474&h=474&rs=1",
+                "https://th.bing.com/th/id/OIP.Tf5y_Aji5OlK6JvY49WJlQHaHa?pid=ImgDet&w=474&h=474&rs=1"
+              ],
+        "descricao": "Notebook Gamer Lenovo i5-11300H NVIDIA",
+        "valorComDesconto": 3779,
+        "valorSemDesconto":  3999,
+        "dados": "Com poderosos processadores Intel® Core™ de 11ª geração e gráficos NVIDIA® GeForce GTX™, o IdeaPad Gaming 3i 6ª Geração (15? Intel) vai ajudar você a jogar de verdade."
+
+    }
+]

@@ -1,0 +1,18 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <body>
+        <p>
+            Esta é a página de login
+        </p>
+        <ul>
+            {% for login in produtos %}
+                <li>{{ login.email }} - {{ login.senha }}  </li>
+            {% endfor %}
+        </ul>
+
+	<a href="{% url 'pagina_inicial' %}">
+        <button type="button">Página inicial</button>
+    </a>
+    </body>
+</html>

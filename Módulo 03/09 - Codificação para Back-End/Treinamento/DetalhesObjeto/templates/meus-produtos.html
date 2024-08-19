@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <body>
+        <header>
+            <h2>
+                Budega Do Seu Zé:
+            </h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Produtos</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+       
+        <ul class="pro">
+            {% for produto in produtos %}
+                <li>{{ produto.nome_produto }} - <a href="{% url 'detalhes_produto' produto.id %}">Ver produto</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
