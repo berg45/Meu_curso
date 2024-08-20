@@ -9,7 +9,7 @@ function criarTabuleiro(){
         for(let col = 0; col < 8; col++){
             const square = document.createElement('div');
             square.classList.add('square');
-            const squareNumber = row * 8 + col + 1; // Número único do quadrado
+            const squareNumber = row  + col ; // Número único do quadrado
             square.dataset.number = squareNumber; // Armazena o número no atributo data
             if((row + col) % 2 === 0 ){
                 square.classList.add('white');
