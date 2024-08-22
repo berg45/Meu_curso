@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Adicionar Aluno{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">Adicionar Novo Aluno</h2>
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                <!-- Campo para Nome do Aluno -->
+                <div class="form-group mb-3">
+                    <label for="nome_aluno">Nome do Aluno</label>
+                    <input type="text" id="nome_aluno" name="nome_aluno" class="form-control" placeholder="Digite o nome do aluno" required>
+                </div>
+
+                <!-- Seletor de Estado -->
+                <div class="form-group mb-3">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" class="form-control" required>
+                        <option value="">Selecione o Estado</option>
+                        <option value="Pi">Piauí</option>
+                        <option value="Ma">Maranhão</option>
+                        <option value="CE">Ceará</option>
+                    </select>
+                </div>
+
+                <!-- Seletor de Cidade -->
+                <div class="form-group mb-3">
+                    <label for="cidade">Cidade</label>
+                    <select id="cidade" name="cidade" class="form-control" required>
+                        <option value="">Selecione a Cidade</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-outline-success w-100">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{% static 'index.js' %}"></script>
+{% endblock %}
+
+
+

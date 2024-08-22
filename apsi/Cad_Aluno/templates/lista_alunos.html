@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Alunos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Alunos</h2>
+    <ul class="list-group">
+        {% for aluno in alunos %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'detalhe_aluno' aluno.id %}" class="text-decoration-none text-dark">{{ aluno.nome }}</a>
+                <span class="badge bg-primary rounded-pill">{{ aluno.id }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

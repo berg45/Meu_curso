@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhe do Aluno{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Detalhes do Aluno</h2>
+                    <p><strong>Nome:</strong> <span class="font-weight-bold">{{ aluno.nome }}</span></p>
+                    <p><strong>Estado:</strong> {{ aluno.estado }}</p>
+                    <p><strong>Cidade:</strong> {{ aluno.cidade }}</p>
+                    <a href="{% url 'lista_alunos' %}" class="btn btn-primary">Voltar para a lista de alunos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
