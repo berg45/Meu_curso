@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from .models import Aluno
 
 
@@ -7,7 +7,7 @@ def lista_alunos(request):
     return render(request, 'lista_alunos.html', {'alunos': alunos})
 
 def detalhe_aluno(request, aluno_id):
-    aluno = get_object_or_404(Aluno, id=aluno_id)
+    aluno = Aluno.objects.get(pk=aluno_id)
     return render(request, 'detalhe_aluno.html', {'aluno': aluno})
 
 def adicionar_aluno(request):
