@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmar Eliminação{% endblock %}
+
+{% block content %}
+<div class="alert alert-danger">
+    <h2>Tens a certeza que queres eliminar "{{ pedido.nome }}"?</h2>
+    <form method="POST" class="d-inline-block">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sim, eliminar</button>
+        <a href="{% url 'pedidos_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
