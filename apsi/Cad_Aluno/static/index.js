@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cidadeSelect = document.getElementById('cidade');
 
     estadoSelect.addEventListener('change', function () {
-        const uf = estadoSelect.value;
+        const uf = this.value;
 
         cidadeSelect.innerHTML = '<option value="">selecione uma cidade</option>';
 

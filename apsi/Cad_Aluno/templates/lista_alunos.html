@@ -8,11 +8,19 @@
     <ul class="list-group">
         {% for aluno in alunos %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="{% url 'detalhe_aluno' aluno.id %}" class="text-decoration-none text-dark">{{ aluno.nome }}</a>
-                <span class="badge bg-primary rounded-pill">{{ aluno.id }}</span>
+                <div class="d-flex align-items-center">
+
+                    <span class="badge bg-primary rounded-pill ms-3">{{ aluno.id }}</span>
+                    
+                    <a href="{% url 'detalhe_aluno' aluno.id %}" class="text-decoration-none text-dark">{{ aluno.nome }}</a>
+                    
+                </div>
+                <div class="d-flex">
+                    <a href="{% url 'editar_aluno' aluno.id  %}" class="btn btn-sm btn-primary ">Editar</a>
+                    <a href="{% url 'excluir_aluno' aluno.id %}" class="btn btn-sm btn-danger ">Excluir</a>
+                </div>
             </li>
         {% endfor %}
     </ul>
 </div>
-
 {% endblock %}

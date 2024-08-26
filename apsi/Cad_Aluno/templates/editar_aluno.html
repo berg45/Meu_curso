@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Editar Aluno{% endblock %}
+
+{% block content %}
+<h2>Editar Aluno</h2>
+<form method="POST" action="">
+    {% csrf_token %}
+    
+
+    <div class="col-md-12">
+        <label for="nome_aluno">Nome do Aluno</label>
+        <input type="text" id="nome_aluno" name="nome_aluno" class="form-control" value="{{ aluno.nome }}" required>
+    </div>
+
+ 
+    <div class="col-md-12">
+        <label for="estado">Estado</label>
+        <select id="estado" name="estado" class="form-control" required>
+            <option value="">Selecione o Estado</option>
+            <option value="Pi" {% if aluno.estado == "Pi" %}selected{% endif %}>Piauí</option>
+            <option value="Ma" {% if aluno.estado == "Ma" %}selected{% endif %}>Maranhão</option>
+            <option value="CE" {% if aluno.estado == "CE" %}selected{% endif %}>Ceará</option>
+        </select>
+    </div>
+
+    
+    <div class="col-md-12">
+        <label for="cidade">Cidade</label>
+        <select id="cidade" name="cidade" class="form-control" required>
+            <option value="{{ aluno.cidade }}">{{ aluno.cidade }}</option>
+        </select>
+    </div>
+
+    <a href="{% url 'lista_alunos' %}">
+        <button type="submit" class="btn btn-success mt-3">Salvar</button>
+    </a>    
+</form>
+<script src="{% static 'index.js' %}"></script>
+{% endblock %}
+
+
