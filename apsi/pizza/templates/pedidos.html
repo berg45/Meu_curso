@@ -1,0 +1,41 @@
+<!-- templates/pedidos.html -->
+{% extends 'base.html' %}
+
+{% block title %}Pedidos{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Cadastro de Pedidos</h1>
+<form method="POST" class="mb-5">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ formulario.as_p }} <!-- Inclui o campo cliente, além dos campos existentes -->
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar Pedido</button>
+</form>
+
+<h2 class="mb-4">Lista de Pedidos</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Sabor</th>
+            <th>Tamanho</th>
+            <th>Tipo de Pedido</th>
+            <th>Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pedido in pedidos %}
+        <tr>
+            <td>{{ pedido.id }}</td>
+            <td>{{ pedido.cliente.nome }}</td> <!-- Nome do cliente associado -->
+            <td>{{ pedido.sabor }}</td>
+            <td>{{ pedido.get_tamanho_display }}</td>
+            <td>{{ pedido.get_pedido_display }}</td>
+            <td>{{ pedido.preco }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -3,9 +3,9 @@ from .models import *
 from .forms import *
 
 
-def VerIndex(request):
+def ListaClientes(request):
     pedidos = Pedido.objects.all()
-    return render(request, 'index.html', {'pedidos': pedidos})
+    return render(request, 'lista_pedidos.html', {'pedidos': pedidos})
 
 
 def criarCliente(request):
