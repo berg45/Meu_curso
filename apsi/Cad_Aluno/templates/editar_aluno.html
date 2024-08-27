@@ -5,40 +5,58 @@
 {% block title %}Editar Aluno{% endblock %}
 
 {% block content %}
-<h2>Editar Aluno</h2>
-<form method="POST" action="">
-    {% csrf_token %}
-    
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">Editar Aluno</h2>
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Campo para Nome do Aluno -->
+                <div class="form-group mb-3">
+                    <label for="nome_aluno">Nome do Aluno</label>
+                    <input type="text" id="nome_aluno" name="nome_aluno" class="form-control" value="{{ aluno.nome }}" placeholder="Digite o nome do aluno" required>
+                </div>
 
-    <div class="col-md-12">
-        <label for="nome_aluno">Nome do Aluno</label>
-        <input type="text" id="nome_aluno" name="nome_aluno" class="form-control" value="{{ aluno.nome }}" required>
+                <!-- Campo para Foto do Aluno -->
+                <div class="form-group mb-3">
+                    <label for="foto">Foto do Aluno</label>
+                    <input type="file" id="foto" name="foto" class="form-control" accept="image/*">
+                    
+                    <!-- Exibição da Foto Existente -->
+                    <div id="foto-preview" class="mt-3">
+                        {% if aluno.foto %}
+                            <img id="foto-preview-img" src="{{ aluno.foto.url }}" alt="Foto do Aluno" class="img-fluid" style="max-height: 300px; object-fit: cover;">
+                        {% else %}
+                            <p>Sem foto disponível</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" class="form-control" required>
+                        <option value="">Selecione o Estado</option>
+                        <option value="Pi" {% if aluno.estado == 'Pi' %}selected{% endif %}>Piauí</option>
+                        <option value="Ma" {% if aluno.estado == 'Ma' %}selected{% endif %}>Maranhão</option>
+                        <option value="CE" {% if aluno.estado == 'CE' %}selected{% endif %}>Ceará</option>
+                    </select>
+                </div>
+
+               
+                <div class="form-group mb-3">
+                    <label for="cidade">Cidade</label>
+                    <select id="cidade" name="cidade" class="form-control" required>
+                        <option value="">Selecione a Cidade</option>
+                     
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-outline-success w-100">Salvar</button>
+            </form>
+        </div>
     </div>
-
- 
-    <div class="col-md-12">
-        <label for="estado">Estado</label>
-        <select id="estado" name="estado" class="form-control" required>
-            <option value="">Selecione o Estado</option>
-            <option value="Pi" {% if aluno.estado == "Pi" %}selected{% endif %}>Piauí</option>
-            <option value="Ma" {% if aluno.estado == "Ma" %}selected{% endif %}>Maranhão</option>
-            <option value="CE" {% if aluno.estado == "CE" %}selected{% endif %}>Ceará</option>
-        </select>
-    </div>
-
-    
-    <div class="col-md-12">
-        <label for="cidade">Cidade</label>
-        <select id="cidade" name="cidade" class="form-control" required>
-            <option value="{{ aluno.cidade }}">{{ aluno.cidade }}</option>
-        </select>
-    </div>
-
-    <a href="{% url 'lista_alunos' %}">
-        <button type="submit" class="btn btn-success mt-3">Salvar</button>
-    </a>    
-</form>
+</div>
 <script src="{% static 'index.js' %}"></script>
+
 {% endblock %}
-
-

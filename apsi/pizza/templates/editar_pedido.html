@@ -8,7 +8,9 @@
         {% csrf_token %}
         {{ formulario.as_p }}
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            <a href="{% url 'lista_pedidos' %}">
+               <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </a>   
         </div>
     </form>
 </div>

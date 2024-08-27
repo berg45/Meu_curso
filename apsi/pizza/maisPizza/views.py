@@ -17,7 +17,7 @@ def criarCliente(request):
     else:
         novo_cliente = FormularioCliente()
     clientes = Cliente.objects.all()
-    return render(request, 'clientes.html', {'formulario': novo_cliente, 'clientes': clientes})
+    return render(request, 'criar_clientes.html', {'formulario': novo_cliente, 'clientes': clientes})
 
 def editarCliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
@@ -46,7 +46,7 @@ def criarPedido(request):
     else:
         novo_pedido = FormularioPedido()
     pedidos = Pedido.objects.all()
-    return render(request, 'pedidos.html', {'formulario': novo_pedido , 'pedidos': pedidos})
+    return render(request, 'criar_pedidos.html', {'formulario': novo_pedido , 'pedidos': pedidos})
 # View para editar pedido
 def editarPedido(request, id):
     pedido = get_object_or_404(Pedido, id=id)

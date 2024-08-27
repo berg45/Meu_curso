@@ -13,11 +13,11 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="id_nome">Nome</label>
-                    {{ formulario.nome }}  <!-- Campo gerado pelo Django -->
+                    {{ formulario.nome }}
                 </div>
                 <div class="mb-3">
                     <label for="id_telefone">Telefone</label>
-                    {{ formulario.telefone }}  <!-- Campo gerado pelo Django -->
+                    {{ formulario.telefone }}
                 </div>
                 <div class="mb-3">
                     <label for="id_cep">CEP</label>
@@ -35,6 +35,21 @@
                     <button type="submit" class="btn btn-primary">Salvar Cliente</button>
                 </div>
             </form>
+
+            <h2 class="mb-4 text-center">Clientes Cadastrados</h2>
+            <ul class="list-group">
+                {% for cliente in clientes %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ cliente.nome }} - {{ cliente.telefone }}
+                        <span>
+                            <a href="{% url 'editar_cliente' cliente.id %}" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="{% url 'excluir_cliente' cliente.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                        </span>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-center">Nenhum cliente cadastrado.</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

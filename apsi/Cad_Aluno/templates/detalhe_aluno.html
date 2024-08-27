@@ -12,11 +12,20 @@
                     <p><strong>Nome:</strong> <span class="font-weight-bold">{{ aluno.nome }}</span></p>
                     <p><strong>Estado:</strong> {{ aluno.estado }}</p>
                     <p><strong>Cidade:</strong> {{ aluno.cidade }}</p>
+                    
+                    <!-- Exibição da Foto do Aluno -->
+                    {% if aluno.foto %}
+                        <div class="mb-3">
+                            <img src="{{ aluno.foto.url }}" alt="Foto do Aluno" class="img-fluid" style="max-height: 100px; object-fit: cover;">
+                        </div>
+                    {% else %}
+                        <p>Sem foto disponível</p>
+                    {% endif %}
+                    
                     <a href="{% url 'lista_alunos' %}" class="btn btn-primary">Voltar para a lista de alunos</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

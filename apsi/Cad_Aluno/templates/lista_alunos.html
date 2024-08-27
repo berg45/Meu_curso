@@ -5,18 +5,19 @@
 {% block content %}
 <div class="container mt-4">
     <h2 class="mb-4">Lista de Alunos</h2>
+    <p>Total de Alunos: {{ alunos|length }}</p>
     <ul class="list-group">
         {% for aluno in alunos %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
-
-                    <span class="badge bg-primary rounded-pill ms-3">{{ aluno.id }}</span>
+                    <!-- Exibe a posição do aluno na lista (começando do 1) -->
+                    <span class="badge bg-primary rounded-pill ms-3">{{ forloop.counter }}</span>
                     
                     <a href="{% url 'detalhe_aluno' aluno.id %}" class="text-decoration-none text-dark">{{ aluno.nome }}</a>
                     
                 </div>
                 <div class="d-flex">
-                    <a href="{% url 'editar_aluno' aluno.id  %}" class="btn btn-sm btn-primary ">Editar</a>
+                    <a href="{% url 'editar_aluno' aluno.id %}" class="btn btn-sm btn-primary ">Editar</a>
                     <a href="{% url 'excluir_aluno' aluno.id %}" class="btn btn-sm btn-danger ">Excluir</a>
                 </div>
             </li>
