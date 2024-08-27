@@ -1,5 +1,6 @@
-<!-- templates/clientes.html -->
 {% extends 'base.html' %}
+
+{% load static %}
 
 {% block title %}Clientes{% endblock %}
 
@@ -11,39 +12,32 @@
             <form method="POST" class="mb-5">
                 {% csrf_token %}
                 <div class="mb-3">
-                    {{ formulario.as_p }}
+                    <label for="id_nome">Nome</label>
+                    {{ formulario.nome }}  <!-- Campo gerado pelo Django -->
+                </div>
+                <div class="mb-3">
+                    <label for="id_telefone">Telefone</label>
+                    {{ formulario.telefone }}  <!-- Campo gerado pelo Django -->
+                </div>
+                <div class="mb-3">
+                    <label for="id_cep">CEP</label>
+                    <input type="text" id="cep" name="cep" maxlength="9" class="form-control" onblur="buscarCEP()">
+                </div>
+                <div class="mb-3">
+                    <label for="id_endereco">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" maxlength="40" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="id_bairro">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" maxlength="30" class="form-control">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Salvar Cliente</button>
                 </div>
             </form>
-
-            <h2 class="mb-4 text-center">Lista de Clientes</h2>
-            <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>CEP</th>
-                        <th>Endereço</th>
-                        <th>Bairro</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cliente in clientes %}
-                    <tr>
-                        <td>{{ cliente.id }}</td>
-                        <td>{{ cliente.nome }}</td>
-                        <td>{{ cliente.telefone }}</td>
-                        <td>{{ cliente.cep }}</td>
-                        <td>{{ cliente.endereco }}</td>
-                        <td>{{ cliente.bairro }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
+
+<script src="{% static 'index.js' %}"></script>
 {% endblock %}
