@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% static loard %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">{% if form.instance.pk %}Editar Aluno{% else %}Adicionar Aluno{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nome">Nome do Aluno</label>
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome do aluno" value="{{ form.nome.value|default_if_none:'' }}" required>
+            <div class="invalid-feedback"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="data_nascimento">Data de Nascimento</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" value="{{ form.data_nascimento.value|default_if_none:'' }}" required>
+            <div class="invalid-feedback"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="turma">Turma</label>
+            <select id="turma" name="turma" class="form-control" required>
+                <option value="" disabled selected>Selecione uma turma</option>
+                {% for turma in form.turma.field.queryset %}
+                    <option value="{{ turma.pk }}" {% if turma.pk = form.turma.value %}selected{% endif %}>{{ turma.nome }}</option>
+                {% endfor %}
+            </select>
+            <div class="invalid-feedback"></div>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{% url 'listar_alunos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<script src="{% static 'form_validation.js' %}"></script>
+{% endblock %}
