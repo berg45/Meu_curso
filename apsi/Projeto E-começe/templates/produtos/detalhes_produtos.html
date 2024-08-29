@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ produto.nome }}</h2>
+    <p><img src="{{ produto.img_produto }}" alt="{{ produto.nome }}" class="img-fluid"></p>
+    <p>{{ produto.descricao }}</p>
+    <p class="text-success font-weight-bold">Preço com desconto: {{ produto.valorComDesconto }}</p>
+    <p class="text-danger text-decoration-line-through">Preço sem desconto: {{ produto.valorSemDesconto }}</p>
+    <a href="{% url 'editar_produto' produto.pk %}">
+        <button class="btn btn-sm btn-primary">Editar</button>
+    </a>
+    <a href="{% url 'deletar_produto' produto.pk %}">
+        <button class="btn btn-sm btn-danger">Excluir</button>
+    </a>
+{% endblock %}

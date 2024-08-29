@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if object %}Editar{% else %}Criar{% endif %} Produto</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <div>
+        <label for="id_img_produto">Pré-visualização da Imagem:</label><br>
+        <img id="preview" src="{% if form.instance.img_produto %}{{ form.instance.img_produto.url }}{% endif %}" alt="Pré-visualização" style="max-width: 200px; display: block;" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+<script>
+    document.getElementById('id_img_produto').addEventListener('change', function(event) {
+        const [file] = event.target.files;
+        if (file) {
+            const preview = document.getElementById('preview');
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+        }
+    });
+</script>
+{% endblock %}

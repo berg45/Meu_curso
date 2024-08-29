@@ -14,6 +14,13 @@
                     <span class="badge bg-primary rounded-pill ms-3">{{ forloop.counter }}</span>
                     
                     <a href="{% url 'detalhe_aluno' aluno.id %}" class="text-decoration-none text-dark">{{ aluno.nome }}</a>
+                    {% if aluno.foto %}
+                        <div class="mb-3">
+                            <img src="{{ aluno.foto.url }}" alt="Foto do Aluno" class="img-fluid" style="max-height: 100px; object-fit: cover;">
+                        </div>
+                    {% else %}
+                        <p>Sem foto disponível</p>
+                    {% endif %}
                     
                 </div>
                 <div class="d-flex">
