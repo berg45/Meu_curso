@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 
 class ProdutoListView(ListView):
     model = Produto
-    template_name = 'admin/lista_produto.html'
+    template_name = 'admin/lista_produtos.html'
     context_object_name = 'produtos'
 
 class ProdutoDetailView(DetailView):
@@ -17,16 +17,16 @@ class ProdutoDetailView(DetailView):
 class ProdutoCreateView(CreateView):
     model = Produto
     form_class = ProdutoForm
-    success_url = reverse_lazy('lista_produto') #para gerar URLs
+    success_url = reverse_lazy('lista_produtos') #para gerar URLs
     template_name = 'admin/form_produto.html'
 
 class ProdutoUpdateView(UpdateView):
     model = Produto
     form_class = ProdutoForm
-    success_url = reverse_lazy('lista_produto')
+    success_url = reverse_lazy('lista_produtos')
     template_name = 'admin/form_produto.html'
 
 class ProdutoDeleteView(DeleteView):
     model = Produto
-    success_url = reverse_lazy('lista_produto')
+    success_url = reverse_lazy('lista_produtos')
     template_name = 'admin/confirmar_deletar_produto.html'

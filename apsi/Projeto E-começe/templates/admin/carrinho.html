@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho de Compras</title>
+</head>
+<body>
+    <h1>Seu Carrinho</h1>
+    <ul>
+        {% for produto in produtos %}
+        <li>
+            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" style="width:100px;">
+            <h2>{{ produto.nome }}</h2>
+            <p>Preço: R$ {{ produto.preco }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'cadastro_cliente' %}">Finalizar Compra</a>
+</body>
+</html>
+
