@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Lista de Clientes</h1>
+    <a href="{% url 'cliente_create' %}" class="btn btn-primary mb-3">Adicionar Novo Cliente</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF/CNPJ</th>
+                <th>CEP</th>
+                <th>Endereço</th>
+                <th>Bairro</th>
+                <th>Número</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.cpf_cnpj }}</td>
+                <td>{{ cliente.cep }}</td>
+                <td>{{ cliente.endereço }}</td>
+                <td>{{ cliente.bairro }}</td>
+                <td>{{ cliente.numero }}</td>
+                <td>{{ cliente.cidade }}</td>
+                <td>{{ cliente.estado }}</td>
+                <td>
+                    <a href="{% url 'cliente_edit' cliente.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'cliente_delete' cliente.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

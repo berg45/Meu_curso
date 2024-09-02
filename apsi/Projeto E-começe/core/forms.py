@@ -11,4 +11,7 @@ class ProdutoForm(forms.ModelForm):
 class ClientesForm(ModelForm):
     class Meta:
         model = Clientes
-        fields = ["nome", "cpf_cnpj", "cep", "endereço", "bairro", "numero", "cidade", "estado"]
+        fields = '__all__'
+
+ 
+   
