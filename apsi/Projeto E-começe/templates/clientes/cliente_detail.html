@@ -1,0 +1,36 @@
+<!-- cliente_detail.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Detalhes do Cliente</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Nome</dt>
+        <dd class="col-sm-9">{{ cliente.nome }}</dd>
+        
+        <dt class="col-sm-3">CPF/CNPJ</dt>
+        <dd class="col-sm-9">{{ cliente.cpf_cnpj }}</dd>
+        
+        <dt class="col-sm-3">CEP</dt>
+        <dd class="col-sm-9">{{ cliente.cep }}</dd>
+        
+        <dt class="col-sm-3">Endereço</dt>
+        <dd class="col-sm-9">{{ cliente.endereço }}</dd>
+        
+        <dt class="col-sm-3">Bairro</dt>
+        <dd class="col-sm-9">{{ cliente.bairro }}</dd>
+        
+        <dt class="col-sm-3">Número</dt>
+        <dd class="col-sm-9">{{ cliente.numero }}</dd>
+        
+        <dt class="col-sm-3">Cidade</dt>
+        <dd class="col-sm-9">{{ cliente.cidade }}</dd>
+        
+        <dt class="col-sm-3">Estado</dt>
+        <dd class="col-sm-9">{{ cliente.estado }}</dd>
+    </dl>
+    <a href="{% url 'cliente_update' cliente.pk %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'cliente_delete' cliente.pk %}" class="btn btn-danger">Excluir</a>
+    <a href="{% url 'cliente_list' %}" class="btn btn-secondary">Voltar para a lista</a>
+</div>
+{% endblock %}

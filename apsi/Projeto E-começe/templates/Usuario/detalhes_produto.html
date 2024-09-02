@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ produto.nome_produto }}</h1>
+    {% if produto.img_produto %}
+        <img src="{{ produto.img_produto.url }}" class="img-fluid" alt="{{ produto.nome_produto }}" style="height: 400px; object-fit: cover;">
+        {% else %}
+        <span class="text-muted">Sem imagem</span>
+    {% endif %}
+    <p>{{ produto.descricao }}</p>
+    <p>Preço com desconto: R$ {{ produto.valorComDesconto }}</p>
+    
+    <a href="{% url 'adicionar_ao_carrinho' produto.pk %}" class="btn btn-success">Adicionar ao Carrinho</a>
+</div>
+{% endblock %}

@@ -9,8 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/autocomplite_address.js' %}"></script>
-
-
+    
     
     </head>
         <body>
@@ -37,6 +36,9 @@
                             </li>
                             <li>
                                 <a class="nav-link" href="{% url 'criar_produto' %}">ADICONAR NOVO PRODUTO</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'cliente_create' %}">ADICONAR NOVO USUARIO</a>
                             </li>
                            
                        
@@ -68,5 +70,6 @@
             <footer class="bg-dark text-white text-center py-3 mt-5" >
                 <p>&copy; 2024 BERG STOR</p>
             </footer>
+            <script src="{% static 'buscar_cep.js' %}"></script>
         </body>
 </html>
