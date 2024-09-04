@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Lista de Turmas</h1>
+    <a href="{% url 'criar_turma' %}" class="btn btn-primary mb-3">Adicionar Turma</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ano</th>
+                <th>Professores</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turma in turmas %}
+            <tr>
+                <td>
+                    <a href="{% url 'detalhes_turma' turma_id=turma.id %}">{{ turma.nome }}</a>
+                </td>
+                <td>{{ turma.ano }}</td>
+                <td>
+                    {% for professor in turma.professores.all %}
+                        {{ professor.nome }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{% url 'atualizar_turma' turma_id=turma.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'excluir_turma' turma_id=turma.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir esta turma?');">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Nenhuma turma cadastrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

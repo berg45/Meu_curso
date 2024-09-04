@@ -2,40 +2,40 @@
 {% load static %}
 {% block content %}
 <div class="container mt-4">
-   
+    <!-- Cabeçalho -->
     <div class="row mb-3">
         <div class="col-md-12 text-center">
-            <h1>Todos os Produtos</h1>
+            <h1>Tudo Em Um Só Lugar</h1>
         </div>
     </div>
 
-    
-    <div class="row mb-3">
-        <div class="col-md-12">
-            <h2>Lista de Produtos</h2>
-        </div>
-    </div>
-
-   
+    <!-- Seção de Produtos -->
     <div class="row">
-        {% for produto in object_list %}
-        <div class="col-md-4 mb-3">
-            <div class="card">
+        {% for produto in produtos %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
                 {% if produto.img_produto %}
-                    <img src="{{ produto.img_produto.url }}" class="card-img-top" alt="{{ produto.nome_produto }}" style="height: 200px; object-fit: cover;">
+                    <img src="{{ produto.img_produto.url }}" class="card-img-top" alt="{{ produto.nome_produto }}">
                 {% else %}
-                <span class="text-muted">Sem imagem</span>
+                    <img src="{% static 'path/to/placeholder-image.jpg' %}" class="card-img-top" alt="Sem imagem">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ produto.nome_produto }}</h5>
-                    <p class="card-text">Preço: R$ {{ produto.valorComDesconto }}</p>
-                    <a href="{% url 'detalhes_produto' produto.pk %}" class="btn btn-primary">Ver Detalhes</a>
-                    <a href="{% url 'adicionar_carrinho' produto.pk %}" class="btn btn-success">Adicionar ao Carrinho</a>
+                    <p class="card-text">{{ produto.descricao }}</p>
+                    <p class="card-text">
+                        <span style="color: green; font-weight: bold;">R$ {{ produto.valorComDesconto }}</span>
+                        <span style="color: red; text-decoration: line-through;">R$ {{ produto.valorSemDesconto }}</span>
+                    </p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'detalhes_produto' produto.pk %}" class="btn btn-info btn-sm mb-2">Ver Detalhes</a>
+                    <form method="post" action="{% url 'adicionar_carrinho' produto.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
+                    </form>
                 </div>
             </div>
         </div>
-        {% empty %}
-        <p class="text-center">Nenhum produto disponível no momento.</p>
         {% endfor %}
     </div>
 </div>

@@ -1,26 +1,42 @@
-
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h2>{% if object %}Editar{% else %}Criar{% endif %} Produto</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    
-    <div>
-        <label for="id_img_produto">Pré-visualização da Imagem:</label><br>
-        <img id="preview" src="{% if form.instance.img_produto %}{{ form.instance.img_produto.url }}{% endif %}" alt="Pré-visualização" style="max-width: 200px; display: block;" />
+<div class="container mt-4">
+    <!-- Cabeçalho -->
+    <div class="row mb-3">
+        <div class="col-md-12 text-center">
+            <h1>Tudo Em Um Só Lugar</h1>
+        </div>
     </div>
-    
-    <button type="submit" class="btn btn-primary">Salvar</button>
-</form>
-<script>
-    document.getElementById('id_img_produto').addEventListener('change', function(event) {
-        const [file] = event.target.files;
-        if (file) {
-            const preview = document.getElementById('preview');
-            preview.src = URL.createObjectURL(file);
-            preview.style.display = 'block';
-        }
-    });
-</script>
+
+    <!-- Seção de Produtos -->
+    <div class="row">
+        {% for produto in produtos %}
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card h-100" style="border-radius: 10px;">
+                {% if produto.img_produto %}
+                    <img src="{{ produto.img_produto.url }}" class="card-img-top" alt="{{ produto.nome_produto }}" style="height: 120px; object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                {% else %}
+                    <img src="{% static 'path/to/placeholder-image.jpg' %}" class="card-img-top" alt="Sem imagem" style="height: 120px; object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                {% endif %}
+                <div class="card-body">
+                    <h6 class="card-title">{{ produto.nome_produto }}</h6>
+                    <p class="card-text" style="font-size: 0.9rem;">{{ produto.descricao }}</p>
+                    <p class="card-text">
+                        <span style="color: green; font-weight: bold;">R$ {{ produto.valorComDesconto }}</span>
+                        <span style="color: red; text-decoration: line-through;">R$ {{ produto.valorSemDesconto }}</span>
+                    </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <form method="post" action="{% url 'adicionar_carrinho' produto.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-sm">Adicionar</button>
+                    </form>
+                    <a href="{% url 'cadastro_usuario' %}" class="btn btn-primary btn-sm">Comprar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

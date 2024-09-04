@@ -10,6 +10,6 @@
     <p>{{ produto.descricao }}</p>
     <p>Preço com desconto: R$ {{ produto.valorComDesconto }}</p>
     
-    <a href="{% url 'adicionar_ao_carrinho' produto.pk %}" class="btn btn-success">Adicionar ao Carrinho</a>
+    <a href="{% url 'adicionar_carrinho' produto.pk %}" class="btn btn-success">Adicionar ao Carrinho</a>
 </div>
 {% endblock %}
