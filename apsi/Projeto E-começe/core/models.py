@@ -16,6 +16,7 @@ class Clientes(models.Model):
         id = models.AutoField(primary_key=True)
         nome = models.CharField(max_length=150)
         cpf_cnpj = models.CharField(max_length=150)
+        email = models.EmailField()
         cep = models.TextField(max_length=8)
         endereço = models.TextField(max_length=150)
         bairro = models.TextField(max_length=150)

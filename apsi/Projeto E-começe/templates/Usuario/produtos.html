@@ -13,11 +13,11 @@
     <div class="row">
         {% for produto in produtos %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100">
+            <div class="card h-100" style="border-radius: 15px;">
                 {% if produto.img_produto %}
-                    <img src="{{ produto.img_produto.url }}" class="card-img-top" alt="{{ produto.nome_produto }}">
+                    <img src="{{ produto.img_produto.url }}" class="card-img-top" alt="{{ produto.nome_produto }}" style="border-radius: 15px 15px 0 0;">
                 {% else %}
-                    <img src="{% static 'path/to/placeholder-image.jpg' %}" class="card-img-top" alt="Sem imagem">
+                    <img src="{% static 'path/to/placeholder-image.jpg' %}" class="card-img-top" alt="Sem imagem" style="border-radius: 15px 15px 0 0;">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ produto.nome_produto }}</h5>
@@ -25,14 +25,17 @@
                     <p class="card-text">
                         <span style="color: green; font-weight: bold;">R$ {{ produto.valorComDesconto }}</span>
                         <span style="color: red; text-decoration: line-through;">R$ {{ produto.valorSemDesconto }}</span>
+                       
                     </p>
+                    <a href="{% url 'cliente_create' %}" class="btn btn-primary btn-sm btn-custom">Comprar</a>
                 </div>
-                <div class="card-footer text-center">
-                    <a href="{% url 'detalhes_produto' produto.pk %}" class="btn btn-info btn-sm mb-2">Ver Detalhes</a>
+                <div class="card-footer text-center" style="display: flex; justify-content: space-between; align-items: center;">
                     <form method="post" action="{% url 'adicionar_carrinho' produto.pk %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                     </form>
+                    
+                    <a href="{% url 'detalhes_produto' produto.pk %}" class="btn btn-info btn-sm mb-2">Ver Detalhes</a>
                 </div>
             </div>
         </div>

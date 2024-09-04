@@ -1,0 +1,23 @@
+
+.card {
+    border-radius: 15px;
+}
+
+.card-img-top {
+    border-radius: 15px 15px 0 0;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-custom {
+    margin-left: 5px;
+}
+

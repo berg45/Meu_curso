@@ -44,15 +44,16 @@ def cliente_detail(request, pk):
 def cliente_create(request):
     if request.method == "POST":
         form = ClientesForm(request.POST)
-        if form.is_valid():
+        if form.is_valid():    
             form.save()
             return redirect('cliente_list')
     else:
+       
         form = ClientesForm()
     return render(request, 'clientes/cliente_form.html', {'form': form})
 
-def cliente_update(request, pk):
-    cliente = get_object_or_404(Clientes, pk=pk)
+def cliente_update(request, id):
+    cliente = get_object_or_404(Clientes, id=id)
     if request.method == "POST":
         form = ClientesForm(request.POST, instance=cliente)
         if form.is_valid():

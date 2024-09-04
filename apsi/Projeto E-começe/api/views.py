@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from core.models import Produto
-from django.http import HttpResponse
 
 
 def produto_list(request):
@@ -35,3 +34,5 @@ def remover_carrinho(request, produto_id):
         del carrinho[str(produto_id)]
     request.session['carrinho'] = carrinho
     return redirect('carrinho_view')
+
+

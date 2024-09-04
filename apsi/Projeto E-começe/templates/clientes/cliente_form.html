@@ -1,13 +1,123 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% load static %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">Adicionar Novo Cliente</h1>
-    <form method="post">
+    
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Meu Formulario </h1>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'cliente_list' %}">
+                <button class=" btn btn-md btn-primary">
+                    Ver Lista
+                </button>
+            </a>
+        </div>
+    </div>
+    <form method="post"  >
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="{% url 'cliente_list' %}" class="btn btn-secondary">Cancelar</a>
+       
+        <div class="row p-5">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" id="nome" placeholder="SEU NOME" name="nome"></input>
+                </div>           
+                <div class="form-group">
+                    <label for="cpf_cnpj">CPF_CNPJ</label>
+                    <input type="text" class="form-control" id="cpf_cnpj" placeholder="CPF OU CNPJ" name="cpf_cnpj"></input>
+                    {% for error in form.cpf_cnpj.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                
+                </div>
+                <div class="email">
+                    <label for="email">EMAIL</label>
+                    <input type="text" class="form-control" id="email" placeholder="EMAIL" name="email"></input>
+                    {% for error in form.email.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" class="form-control" id="cep" placeholder="CEP" name="cep"  ></input>
+                    {% for error in form.cep.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" placeholder="Endereço" name="edereco"></input>
+                    {% for error in form.edereco.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="text" class="form-control" id="numero" placeholder="Número" name="numero"></input>
+                    {% for error in form.numero.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro"></input>
+                    {% for error in form.bairro.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"></input>
+                    {% for error in form.cidade.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estato</label>
+                    <input type="text" class="form-control" id="estado" placeholder="Estado" name="estado"></input>
+                    {% for error in form.estado.errors %}
+                    <small id="emailHelp" class="form-text text-muted">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+              
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <a class="btn btn-warning" href="{% url 'lista_produtos' %}" role="button">voltar</a>
+            </div>
+        </div>
     </form>
-</div>
+
+
+    <script src="{% static 'js/buscar_cep.js' %}"></script>
+
+
 {% endblock %}
+
+
