@@ -12,11 +12,12 @@ urlpatterns = [
     path('produto/<int:pk>/delete/', views.ProdutoDeleteView.as_view(), name='deletar_produto'),
 
     # Formulario Clientes....
-    path('clientes/new/', views.cliente_list, name='cliente_list'),
+    path('clientes/', views.cliente_list, name='cliente_list'),
     path('cliente/<int:pk>/', views.cliente_detail, name='cliente_detail'),
     path('cliente/new/', views.cliente_create, name='cliente_create'),
     path('cliente/<int:pk>/edit/', views.cliente_update, name='cliente_update'),
     path('cliente/<int:pk>/delete/', views.cliente_delete, name='cliente_delete'),
+    
 
     
 ]

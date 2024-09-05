@@ -44,12 +44,16 @@ def cliente_detail(request, pk):
 def cliente_create(request):
     if request.method == "POST":
         form = ClientesForm(request.POST)
-        if form.is_valid():    
-            form.save()
+        if form.is_valid():
+            print("Formulário válido. Salvando...")
+            cliente = form.save()
+            print("Formulário salvo com sucesso. Cliente:", cliente)
             return redirect('cliente_list')
+        else:
+            print("Formulário inválido. Erros:", form.errors)
     else:
-       
         form = ClientesForm()
+
     return render(request, 'clientes/cliente_form.html', {'form': form})
 
 def cliente_update(request, id):

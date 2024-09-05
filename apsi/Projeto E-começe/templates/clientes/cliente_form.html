@@ -59,8 +59,8 @@
                 </div>
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
-                    <input type="text" class="form-control" id="endereco" placeholder="Endereço" name="edereco"></input>
-                    {% for error in form.edereco.errors %}
+                    <input type="text" class="form-control" id="endereco" placeholder="Endereço" name="endereco"></input>
+                    {% for error in form.endereco.errors %}
                     <small id="emailHelp" class="form-text text-muted">
                         {{ error }}
                     </small>
@@ -108,7 +108,9 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+           
+                <button type="submit" class="btn btn-primary">Salva</button>
+                
                 <a class="btn btn-warning" href="{% url 'lista_produtos' %}" role="button">voltar</a>
             </div>
         </div>
