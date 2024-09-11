@@ -16,6 +16,7 @@ class Clientes(models.Model):
         id = models.AutoField(primary_key=True)
         nome = models.CharField(max_length=150)
         cpf_cnpj = models.CharField(max_length=150)
+        email = models.EmailField()
         cep = models.TextField(max_length=8)
         endereço = models.TextField(max_length=150)
         bairro = models.TextField(max_length=150)
@@ -26,3 +27,15 @@ class Clientes(models.Model):
 
         def __str__(self):
             return self.nome
+        
+class Compra(models.Model):
+    cliente = models.ForeignKey(Clientes, on_delete=models.CASCADE)
+    produtos = models.ManyToManyField(Produto, through='ItemCompra')
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    data_compra = models.DateTimeField(auto_now_add=True)
+
+class ItemCompra(models.Model):
+    compra = models.ForeignKey(Compra, on_delete=models.CASCADE)
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    quantidade = models.PositiveIntegerField()
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)

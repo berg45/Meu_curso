@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from core.models import Produto
-from django.http import HttpResponse
+from django.views.generic import *
+from core.models import *
 
 
 def produto_list(request):
@@ -35,3 +35,20 @@ def remover_carrinho(request, produto_id):
         del carrinho[str(produto_id)]
     request.session['carrinho'] = carrinho
     return redirect('carrinho_view')
+
+
+
+class FinalizacaoCompraView(TemplateView):
+    template_name = 'usuario/finalizacao_compra.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        compra = get_object_or_404(Compra, pk=self.kwargs['pk'])
+        cliente = compra.cliente  # Assumindo que a compra tem um campo relacionado ao cliente
+
+        # Adiciona os objetos ao contexto
+        context['compra'] = compra
+        context['cliente'] = cliente
+        return context
+
+

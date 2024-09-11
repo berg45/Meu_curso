@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
+
 from.models import Produto, Clientes
 from django.forms import ModelForm
 
@@ -11,7 +11,7 @@ class ProdutoForm(forms.ModelForm):
 class ClientesForm(ModelForm):
     class Meta:
         model = Clientes
-        fields = '__all__'
+        fields = ['nome', 'cpf_cnpj', 'email', 'cep', 'endereço', 'numero', 'bairro', 'cidade', 'estado']
 
  
    
