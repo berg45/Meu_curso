@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Área do Aluno</h1>
+    
+    <form method="post" class="form-inline mb-4">
+        {% csrf_token %}
+        <label for="nome_aluno" class="mr-2">Digite seu nome:</label>
+        <input type="text" name="nome_aluno" id="nome_aluno" class="form-control mr-2" required>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    {% if aluno_info %}
+        <h2>Detalhes do Aluno</h2>
+        <table class="table table-bordered mb-4">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Turma</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ aluno_info.aluno.nome }}</td>
+                    <td>{{ aluno_info.aluno.turma.nome }} - Ano: {{ aluno_info.aluno.turma.ano }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Disciplinas</h3>
+        <table class="table table-bordered mb-4">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for disciplina in aluno_info.disciplinas %}
+                <tr>
+                    <td>{{ disciplina.nome }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Professores</h3>
+        <table class="table table-bordered mb-4">
+            <thead>
+                <tr>
+                    <th>Professor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for professor in aluno_info.professores %}
+                <tr>
+                    <td>{{ professor.nome }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Notas</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                    <th>Nota</th>
+                    <th>Data de Avaliação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for nota in aluno_info.notas %}
+                <tr>
+                    <td>{{ nota.disciplina.nome }}</td>
+                    <td>{{ nota.nota }}</td>
+                    <td>{{ nota.data_avaliacao }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif aluno_info is None and request.method == 'POST' %}
+        <div class="alert alert-danger">Aluno não encontrado!</div>
+    {% endif %}
+
+    <!-- Exibir todos os alunos se não houver busca -->
+    {% if not aluno_info %}
+        <h2>Todos os Alunos</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome do Aluno</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.nome }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

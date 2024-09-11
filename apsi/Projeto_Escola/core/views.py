@@ -154,7 +154,7 @@ def detalhes_disciplina(request, disciplina_id):
 # Nota views
 def listar_notas(request):
     notas = Nota.objects.all()
-    return render(request, 'core/listar_notas.html', {'notas': notas})
+    return render(request, 'notas/listar_notas.html', {'notas': notas})
 
 def criar_nota(request):
     if request.method == 'POST':
@@ -164,7 +164,7 @@ def criar_nota(request):
             return redirect('listar_notas')
     else:
         form = NotaForm()
-    return render(request, 'core/criar_nota.html', {'form': form})
+    return render(request, 'notas/criar_nota.html', {'form': form})
 
 def atualizar_nota(request, nota_id):
     nota = get_object_or_404(Nota, id=nota_id)
@@ -175,7 +175,7 @@ def atualizar_nota(request, nota_id):
             return redirect('listar_notas')
     else:
         form = NotaForm(instance=nota)
-    return render(request, 'core/atualizar_nota.html', {'form': form})
+    return render(request, 'notas/atualizar_nota.html', {'form': form})
 
 def excluir_nota(request, nota_id):
     nota = get_object_or_404(Nota, id=nota_id)
@@ -186,4 +186,4 @@ def excluir_nota(request, nota_id):
             return redirect('listar_notas')
     else:
         form = NotaForm(instance=nota)
-    return render(request, 'core/deletar_nota.html', {'from': form})
+    return render(request, 'notas/excluir_nota.html', {'from': form})

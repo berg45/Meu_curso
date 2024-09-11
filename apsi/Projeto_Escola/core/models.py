@@ -18,6 +18,7 @@ class Turma(models.Model):
     nome = models.CharField(max_length=50)
     ano = models.IntegerField()
     professores = models.ManyToManyField(Professor)
+    disciplinas = models.ManyToManyField('Disciplina')
     
     def __str__(self):
         return f'{self.nome} - {self.ano}'
