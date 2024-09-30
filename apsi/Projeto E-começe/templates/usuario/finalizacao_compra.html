@@ -2,14 +2,12 @@
 {% load static %}
 {% block content %}
 <div class="container mt-4">
-    <!-- Cabeçalho -->
     <div class="row mb-3">
         <div class="col-md-12 text-center">
             <h1>Compra Finalizada</h1>
         </div>
     </div>
 
-    <!-- Informações do Cliente -->
     <div class="row mb-4">
         <div class="col-md-12">
             <div class="card">
@@ -27,7 +25,6 @@
         </div>
     </div>
 
-    <!-- Resumo da Compra -->
     <div class="row mb-4">
         <div class="col-md-12">
             <div class="card">
@@ -39,25 +36,32 @@
                         <thead>
                             <tr>
                                 <th>Produto</th>
-                                <th>Quantidade</th>
                                 <th>Preço Unitário</th>
+                                <th>Quantidade</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for item in compra.itens %}
+                            {% for item in cart %}
                             <tr>
-                                <td>{{ item.produto.nome_produto }}</td>
-                                <td>{{ item.quantidade }}</td>
-                                <td>R$ {{ item.produto.valorComDesconto }}</td>
-                                <td>R$ {{ item.subtotal }}</td>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.total_price }}</td>
+                                <td>
+                                    <a href="{% url 'cart_remove' item.product.id %}">Remover</a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5">O carrinho está vazio.</td>
                             </tr>
                             {% endfor %}
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="3" class="text-right">Total:</th>
-                                <th>R$ {{ compra.total }}</th>
+                                <th colspan="3">Total:</th>
+                                <th>R$ {{ total|floatformat:2 }}</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -70,7 +74,7 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <a href="{% url 'lista_produtos' %}" class="btn btn-secondary">Continuar Comprando</a>
-            <a href="{% url 'cliente_detalhes' cliente.pk %}" class="btn btn-primary">Ver Detalhes do Cliente</a>
+            <a href="{% url 'cliente_detail'  pk=cliente.pk %}" class="btn btn-primary">Ver Detalhes do Cliente</a> 
         </div>
     </div>
 </div>

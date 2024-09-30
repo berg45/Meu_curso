@@ -28,10 +28,10 @@
                         <span style="color: red; text-decoration: line-through;">R$ {{ produto.valorSemDesconto }}</span>
                        
                     </p>
-                    <a href="{% url 'cliente_create' %}" class="btn btn-primary btn-sm btn-custom">Comprar</a>
+                    
                 </div>
                 <div class="card-footer text-center" style="display: flex; justify-content: space-between; align-items: center;">
-                    <form method="post" action="{% url 'adicionar_carrinho' produto.pk %}">
+                    <form method="post" action="{% url 'cart_add' produto.pk %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                     </form>
@@ -41,6 +41,8 @@
             </div>
         </div>
         {% endfor %}
+
     </div>
 </div>
+
 {% endblock %}

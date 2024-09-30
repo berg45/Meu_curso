@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import *
-from .models import Produto, Clientes
+from core.models import Produto, Clientes, Compra, ItemCompra
 from .forms import ProdutoForm, ClientesForm
 from django.urls import reverse_lazy
+import sys, pprint
 
 
 class ProdutoListView(ListView):
@@ -41,20 +42,26 @@ def cliente_detail(request, pk):
     cliente = get_object_or_404(Clientes, pk=pk)
     return render(request, 'clientes/cliente_detail.html', {'cliente': cliente})
 
+
+def calcular_total():
+ 
+    return 0
+
 def cliente_create(request):
-    if request.method == "POST":
+    
+    if request.method == 'POST':
         form = ClientesForm(request.POST)
         if form.is_valid():
-            print("Formulário válido. Salvando...")
             cliente = form.save()
-            print("Formulário salvo com sucesso. Cliente:", cliente)
-            return redirect('cliente_list')
-        else:
-            print("Formulário inválido. Erros:", form.errors)
+            total = calcular_total() 
+            compra = Compra.objects.create(cliente=cliente, total=total)
+            return redirect('finalizacao_compra', pk=compra.pk)
     else:
         form = ClientesForm()
 
     return render(request, 'clientes/cliente_form.html', {'form': form})
+
+
 
 def cliente_update(request, id):
     cliente = get_object_or_404(Clientes, id=id)

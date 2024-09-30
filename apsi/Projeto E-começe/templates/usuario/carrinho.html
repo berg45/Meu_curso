@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,12 +47,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             var total = 0;
             var precoElementos = document.querySelectorAll('.produto-preco');
-            
+
             precoElementos.forEach(function(precoElem) {
                 var precoTexto = precoElem.textContent.replace('R$ ', '').replace(',', '.');
                 total += parseFloat(precoTexto);
             });
-            
+
             var totalElement = document.getElementById('total');
             totalElement.textContent = 'Total: R$ ' + total.toFixed(2).replace('.', ',');
         });

@@ -1,5 +1,6 @@
-$(document) .ready(function(){
+$(document).ready(function(){
     $("#cep").blur(function () {
+        console.log('CEP field lost focus'); // Verifique se esta mensagem aparece
         var cep = $(this).val().replace(/\D/g, '');
         if (cep != ""){
             var validacep = /^[0-9]{8}$/;
@@ -15,26 +16,20 @@ $(document) .ready(function(){
                         $("#bairro").val(dados.bairro);
                         $("#cidade").val(dados.localidade);
                         $("#estado").val(dados.uf);
-                    }
-                    else {
+                    } else {
                         limpa_formulario_cep();
-                        alert("cep não encontrado!")
+                        alert("CEP não encontrado!");
                     }
                 });
-            }    
-            else{
+            } else {
                 limpa_formulario_cep();
-                alert("formulario de CEP invalido");
+                alert("Formato de CEP inválido");
             }
-        }
-        else{
-           
+        } else {
             limpa_formulario_cep();
-
-        }   
+        }
     });
     function limpa_formulario_cep(){
-        
         $("#endereco").val("");
         $("#bairro").val("");
         $("#cidade").val("");
@@ -42,6 +37,4 @@ $(document) .ready(function(){
         $('#numero').val("");
         $('#complemento').val("");
     }
-})
-
-
+});

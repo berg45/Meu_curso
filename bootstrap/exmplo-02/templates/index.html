@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meu Projeto Bootstrap</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script src="{% static 'js/modal.js'%}"></script>
+        
+        
+        
+        
+    </head>
+    <body>
+
+        <header class="container mt-3">
+            <div class="container">
+                <div class="row align-items-center justify-content-start">
+                    <div class="col-2">
+                        <img src="https://www.meupositivo.com.br/doseujeito/wp-content/uploads/2023/10/Nova-ferramenta-do-Google-permite-identificar-imagens-geradas-por-IA.jpg" alt="Logo" style="width: 100%">
+                    </div>
+                
+                    <div class="col-4">
+                        <h1>Company</h1>
+                        <p>Description</p>
+                    </div>
+                
+                    <div class="col-6 d-flex justify-content-end">
+                        <div class="btn-group" role="group" aria-label="Exemplo básico">
+                            <button type="button" class="btn btn-outline-primary me-2">EN</button>
+                            <button type="button" class="btn btn-outline-success me-2">FR</button>
+                            <button type="button" class="btn btn-outline-danger me-2">DE</button>
+                            <button type="button" class="btn btn-outline-warning me-2">CN</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row col-md-12 justify-content-between">
+                    <div class="col-md-6">
+                        {% if user.is_authenticated %}
+                        <div class="row">
+                            <div class="col-d-6">
+                                <p>Bem-vindo, {{ user.username }} </p>
+                            </div>
+                            <div class="col-md-6">
+                                <form method="POST" action="{% url "logout" %}">
+                                    {% csrf_token %} 
+                                    <button class="btn btn-lg btn-danger" type="submit">Logout</button>
+                                    </form>
+                            </div>
+                        </div>
+                        {% else %}
+                        <button type="button" class="btn  btn-warning" data-bs-toggle="modal" data-bs-target="#modal"> Login </button>
+                        <a href="{% url 'register' %}">
+                            <button type="button" class="btn btn-danger">Registre-se</button>
+                        </a>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="col-6  text-end">
+                        <strong>hite | monange | Bem alie</strong>
+                    </div>
+                </div>
+            </div>
+        </header>
+       
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="examplemodal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="examplemodal">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <form method="POST" action="{% url "login" %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Senha:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit"  class="btn btn-primary">Entrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-none d-lg-block p-2" style="background-color: rgb(41, 39, 39); border-radius: 5px;">
+                        <ul class="nav">
+                            <li class="nav-item">
+                            <a class="nav-link disabled" style="color: white;" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link disabled" style="color: white;" href="#">Products</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link disabled" style="color: white;" href="#">Dwonload</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link disabled" style="color: white;" href="#">Buy Now</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" style="color: white;" href="#">Suport</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" style="color: white;" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item ms-auto"></li>
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-light" type="submit">Search</button>
+                                </form>
+                            </li>
+                        </ul>
+                        
+                    </nav>
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="https://conteudize.ai/blog/wp-content/uploads/2024/06/como-criar-prompts-para-geracao-de-imagens-com-ia.webp" alt="Main Image" class="img-fluid w-100">
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="container">
+        <div class="row">
+            <div class="col-md-9 card">
+                <div class="col-md-12">
+                    <div class=" row card-body">
+                        <div class="col-12" style="background: linear-gradient(to right, #66b3ff, #0077be); min-height: 50px; color: white; text-align: center;">
+                            <p><h5>Top Story Headline</h5></p>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4 " style="background-color: grey; height: 200px;">
+                                <img src="https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg" alt="" width="300" height="200px">
+                            </div>
+                            <div class="col-md-8">
+                                text_description:_________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________.
+                            </div>
+                        </div> 
+                        <div class="row justify-content-center mt-2">
+                            <div class="col-md-6 text-center">
+                                <button class="btn btn-jg btn-primary me-5"> botão</button>
+                                <button class="btn btn-jg btn-danger"> botão</button>
+                            </div>
+                        </div>
+                        <div class="col-12" style="background: linear-gradient(to right, #66b3ff, #0077be); min-height: 50px; color: white; text-align: center;">
+                            <p> <h5> Top Story Headline</h5></p>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <div class="col-12" style="background: linear-gradient(to right, #66b3ff, #0077be); min-height: 50px; color: white;">
+                                    <img src="https://res.cloudinary.com/dte7upwcr/image/upload/v1677788739/blog/blog2/ia-criar-imagens/ia-criar-imagens2.jpg" alt="" width="205" height="150px">
+
+                                </div>
+                                <div class="col">
+                                    textos
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="col" style="background-color: gray; height: 150px;">
+                                    <img src="https://www.gaceta.unam.mx/wp-content/uploads/2023/10/231002-aca4-des-f1-inteligencia-artificial.jpg" alt="" width="205" height="150px">
+                                </div>
+                                <div class="col">
+                                    textos
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="col" style="background-color: gray; height: 150px;">
+                                    <img src="https://blog.ebaconline.com.br/blog/wp-content/uploads/2023/11/image6-1.png" alt="" width="205" height="150px">
+                                </div>
+                                <div class="col">
+                                    textos
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="col" style="background-color: gray; height: 150px;">
+                                    <img src="https://ehgomes.com.br/wp-content/uploads/2024/04/Gerador-de-Imagens-IA-Uma-Ferramenta-para-Educadores.webp" alt="" width="205" height="150px">
+                                </div>
+                                <div class="col">
+                                    textos
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="row card mt-3">
+                    <div class="col-12" style="background: linear-gradient(to right, #66b3ff, #0077be); min-height: 50px; color: white; text-align: center;">
+                        <h3>social</h3>
+                    </div>
+                </div>
+                <div class="row card mt-2">
+                    <div class="card-body">
+                        <div class="row">
+                            <iframe class="embed-responsive-item w-100" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" frameborder="0" allowfullscreen style="min-height: 150px;"></iframe><p>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <button class="bt btn-lg btn-primary w-100">
+                                    share e link
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row card mt-3 p-2">
+                    <div class="col-12" style="background: linear-gradient(to right, #66b3ff, #0077be); min-height: 50px; color: white; text-align: center;">
+                        <h3>Navigate</h3>
+                    </div>
+                    <div class="row">
+                        <ul class="p-3 me-2">
+                            <li>item name</li>
+                            <li>item name</li>
+                            <li>item name</li>
+                            <li>item name</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        
+        
+
+        <script>
+        // Adiciona evento ao formulário
+        document.getElementById("loginForm").onsubmit = function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            alert(`Nome: ${username}\nSenha: ${password}`); // Exibe os dados (para teste)
+            const modal = bootstrap.Modal.getInstance(document.getElementById('myModal'));
+            modal.hide(); // Fecha o modal após o envio
+        };
+        </script>
+    </body>
+</html>
+  
+       
+
+    

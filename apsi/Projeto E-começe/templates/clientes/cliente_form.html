@@ -16,9 +16,10 @@
             </a>
         </div>
     </div>
-    <form method="post"  >
+    <form method="post" enctype="multipart/form-data" >
         {% csrf_token %}
-       
+        
+      
         <div class="row p-5">
             <div class="col-md-6">
                 <div class="form-group">
@@ -59,7 +60,7 @@
                 </div>
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
-                    <input type="text" class="form-control" id="endereco" placeholder="Endereço" name="endereco"></input>
+                    <input type="text" class="form-control" id="endereco" placeholder="Endereço" name="endereço"></input>
                     {% for error in form.endereco.errors %}
                     <small id="emailHelp" class="form-text text-muted">
                         {{ error }}
@@ -94,7 +95,7 @@
                     {% endfor %}
                 </div>
                 <div class="form-group">
-                    <label for="estado">Estato</label>
+                    <label for="estado">Estado</label>
                     <input type="text" class="form-control" id="estado" placeholder="Estado" name="estado"></input>
                     {% for error in form.estado.errors %}
                     <small id="emailHelp" class="form-text text-muted">
@@ -119,7 +120,7 @@
 
     <script src="{% static 'js/buscar_cep.js' %}"></script>
 
-
+    
 {% endblock %}
 
 
