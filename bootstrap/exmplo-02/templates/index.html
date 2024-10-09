@@ -46,7 +46,7 @@
                                 <p>Bem-vindo, {{ user.username }} </p>
                             </div>
                             <div class="col-md-6">
-                                <form method="POST" action="{% url "logout" %}">
+                                <form method="POST" action="{% url 'logout' %}">
                                     {% csrf_token %} 
                                     <button class="btn btn-lg btn-danger" type="submit">Logout</button>
                                     </form>
@@ -60,7 +60,7 @@
                         {% endif %}
                     </div>
                     
-                    <div class="col-6  text-end">
+                    <div class="col-6 text-end">
                         <strong>hite | monange | Bem alie</strong>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         <h5 class="modal-title" id="examplemodal">Login</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                     </div>
-                    <form method="POST" action="{% url "login" %}">
+                    <form method="POST" action="{% url 'login' %}">
                     {% csrf_token %}
                     <div class="modal-body">
                             <div class="mb-3">
@@ -99,7 +99,7 @@
         
 
 
-        <div class="container">
+        <div class="container pt-2">
             <div class="row">
                 <div class="col-12">
                     <nav class="d-none d-lg-block p-2" style="background-color: rgb(41, 39, 39); border-radius: 5px;">
