@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel</title>
+</head>
+<body>
+    
+    <h2>Bem-vindo ao Painel, {{ user.name }}</h2>
+    <h3>{{empresas.nome}}</h3>
+    
+        {% if publicacao %}
+                <img src="{{ publicacao.foto }}" alt="Foto do Prato">
+                <h3>{{ publicacao.titulo_prato }}</h3>
+            {% else %}
+                <p>Nenhuma publicação encontrada.</p>
+            {% endif %}
+    <p>Esta página está protegida e só pode ser acessada por usuários logados.</p>
+</body>
+</html>
