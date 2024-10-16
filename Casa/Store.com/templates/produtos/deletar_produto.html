@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Deletar Produto: {{ produto.nome_produto }}{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4 text-danger">Tem certeza que deseja deletar este produto?</h1>
+
+<p><strong>Nome:</strong> {{ produto.nome_produto }}</p>
+<p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+<p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Deletar Produto</button>
+    <a href="{% url 'listar_produtos' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+.navbar-custom {
+    background: linear-gradient(90deg, #a3c9f7, #82b1f7, #639ef7);
+}
+/* Centralizando o nome "Minha Loja" */
+.navbar-brand {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}

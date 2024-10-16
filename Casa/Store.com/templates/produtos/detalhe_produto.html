@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes do Produto: {{ produto.nome_produto }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{ produto.foto.url }}" class="img-fluid rounded shadow" alt="{{ produto.nome_produto }}">
+    </div>
+    <div class="col-md-6">
+        <h1 class="display-5">{{ produto.nome_produto }}</h1>
+        <p class="lead">{{ produto.descricao }}</p>
+        <p class="h4 text-success">Preço: R$ {{ produto.preco }}</p>
+        <div class="mt-4">
+            <a href="{% url 'editar_produto' produto.id %}" class="btn btn-primary">Editar Produto</a>
+            <a href="{% url 'listar_produtos' %}" class="btn btn-secondary">Voltar à Lista de Produtos</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
