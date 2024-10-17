@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+
+{% block title %}Painel{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center">Bem-vindo ao Painel, <span class="text-primary">{{ user.name }}</span></h2>
+        <h3 class="text-muted text-center">{{ empresas.nome }}</h3>
+
+        <div class="mt-4">
+            {% if publicacao %}
+                <div class="text-center">
+                    <img src="{{ publicacao.foto }}" class="img-fluid rounded" alt="Foto do Prato" style="max-width: 400px;">
+                    <h3 class="mt-3">{{ publicacao.titulo_prato }}</h3>
+                </div>
+            {% else %}
+                <p class="text-center text-danger">Nenhuma publicação encontrada.</p>
+            {% endif %}
+        </div>
+
+        <p class="mt-4 text-center text-muted">
+            Esta página está protegida e só pode ser acessada por usuários logados.
+        </p>
+    </div>
+</div>
+    
+{% endblock %}
