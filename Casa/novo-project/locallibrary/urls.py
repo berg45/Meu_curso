@@ -1,5 +1,5 @@
 """
-URL configuration for project project.
+URL configuration for locallibrary project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -14,24 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
-from django.contrib.auth import views as auth_views
-
-
-from autentication.views import register
-from django.views.generic import TemplateView
-from autentication.views import  login_view
-
+from django.contrib import admin
+from django.urls import path
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='dashboard.html'),name='dashboard'),
-    
-    
-    path('register/', register, name='register'),
-    path('login/', login_view, name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-
-    path('usuarios/', include('app.urls')),
-    path('', include('app.urls')),
+    path('admin/', admin.site.urls),
 ]
-

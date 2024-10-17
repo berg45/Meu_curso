@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Publicações{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Publicações</h1>
+<a href="{% url 'criar_publicacao' %}" class="btn btn-primary mb-3">Nova Publicação</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Título</th>
+            <th>Cidade</th>
+            <th>Empresa</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for publicacao in publicacoes %}
+        <tr>
+            <td>{{ publicacao.id_publicacao }}</td>
+            <td>{{ publicacao.titulo_prato }}</td>
+            <td>{{ publicacao.cidade }}</td>
+            <td>{{ publicacao.empresa }}</td>
+            <td>
+                <a href="{% url 'editar_publicacao' publicacao.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'excluir_publicacao' publicacao.pk %}" class="btn btn-sm btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

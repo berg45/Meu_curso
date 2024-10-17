@@ -1,8 +1,9 @@
 # views.py
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Usuario
-from .forms import UsuarioForm  # Assumindo que tens um formulário chamado UsuarioForm
+from .models import Usuario, Publicacao
+from .forms import UsuarioForm, PublicacaoForm # Assumindo que tens um formulário chamado UsuarioForm
 from django.http import HttpResponse
+
 
 
 def listar_usuarios(request):
@@ -44,3 +45,40 @@ def excluir_usuario(request, aluno_id):
 def detalhes_usuario(request, aluno_id):
     usuario = get_object_or_404(Usuario, id=aluno_id)
     return render(request, 'usuario/detalhes_usuario.html', {'usuario': usuario})
+
+#crud para publicacao
+
+def lista_publicacoes(request ):
+    publicacoes = Publicacao.objects.all()
+    return render(request, 'publicacoes/lista.html  ', {'publicacoes': publicacoes})
+
+
+def criar_publicacao(request):
+    if  request.method == 'POST':
+        form = PublicacaoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_publicacoes')
+    else :
+        form = PublicacaoForm()
+    return render(request, 'publicacoes/form.html',{'form': form})
+
+def editar_publicacao(request, pk):
+    publicacao = get_object_or_404(publicacao, pk=pk)
+    if request.method == 'POST':
+        form = PublicacaoForm(request.POST, request.FILES, instance=publicacao )
+        if form.is_valid():
+            form.save()
+            return redirect('publicacoes')
+    else:
+        form =PublicacaoForm(instance=publicacao)
+   
+    return render(request, 'publicacoes/form.html',{'from':form})
+
+def excluir_publicacao(request, pk):
+    publicacao = get_object_or_404(publicacao, pk=pk)
+    if request.method == 'POST':
+        publicacao.delete()
+        return redirect('lista_publicacoes')
+    return render(request, 'publicacoes/confimar_exclusao.html',{'publicacao':publicacao})
+    
