@@ -4,15 +4,16 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+
 <div class="container">
     <div class="row mb-4">
         <div class="col-md-6">
-            {% if user_info %}
+            {% if user %}
                 <div class="card text-center">
                     <div class="card-body">
-                        <h5 class="card-title">{{ user_info.username }}</h5>
+                        <h5 class="card-title">{{ user.username }}</h5>
                         {% if user_info.profile_picture %}
-                            <img src="{{ user_info.profile_picture }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                            <img src="{{ user.profile_picture }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
                         {% else %}
                             <img src="{% static 'default_profile.png' %}" alt="Default Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
                         {% endif %}
@@ -31,6 +32,7 @@
     <h2>Últimas Postagens</h2>
     <div class="row">
         {% for post in ultimas_postagens %}
+        teste
             <div class="col-md-2">
                 <div class="card mb-4">
                     <img src="{{ post.imagem.url }}" class="card-img-top" alt="{{ post.titulo }}">

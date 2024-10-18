@@ -1,16 +1,18 @@
 # app/views.py
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy    
 from .models import Post, Comentario
-from .forms import ComentarioForm
+from .forms import ComentarioForm, PostForm
 from django.contrib.auth.decorators import login_required
 
-@login_required  # Essa decorator exige que o usuário esteja logado
+
+@login_required 
 def dashboard(request):
     total_postagens = Post.objects.count()
-    ultimas_postagens = Post.objects.order_by('-data_criacao')[:6]  # Últimas 6 postagens
+    ultimas_postagens =  Post.objects.all().order_by('-data_criacao')
 
-    user_info = {
+    user = {
         'username': request.user.username,
         'profile_picture': request.user.profile.profile_picture.url if hasattr(request.user, 'profile') else None
     }
@@ -18,7 +20,7 @@ def dashboard(request):
     return render(request, 'dashboard.html', {
         'total_postagens': total_postagens,
         'ultimas_postagens': ultimas_postagens,
-        'user_info': user_info,
+        'user': user,
     })
 
 # app/views.py
@@ -48,5 +50,35 @@ def detalhes_postagem(request, post_id):
         form = ComentarioForm()
 
     return render(request, 'detalhes_postagem.html', {'post': post, 'comentarios': comentarios, 'form': form})
+
+def post_create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_postagens')
+    else:
+        form = PostForm()
+    return render(request, 'post_form.html', {'form': form})
+
+
+def post_update(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_postagens')
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'post_form.html', {'form': form})
+
+
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('lista_postagens')
+    return render(request, 'post_confirm_delete.html', {'post': post})
 
 

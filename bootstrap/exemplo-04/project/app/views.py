@@ -49,39 +49,39 @@ def detalhes_usuario(request, aluno_id):
 
 #crud para publicacao
 
-    def lista_publicacoes(request ):
-        publicacoes = Publicacao.objects.all()
-        return render(request, 'publicacoes/lista.html  ', {'publicacoes': publicacoes})
+def lista_publicacoes(request ):
+    publicacoes = Publicacao.objects.all()
+    return render(request, 'publicacoes/lista.html  ', {'publicacoes': publicacoes})
 
 
-    def criar_publicacao(request):
-        if  request.method == 'POST':
-            form = PublicacaoForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                return redirect('lista_publicacoes')
-        else :
-            form = PublicacaoForm()
-        return render(request, 'publicacoes/form.html',{'form': form})
-
-    def editar_publicacao(request, pk):
-        publicacao = get_object_or_404(publicacao, pk=pk)
-        if request.method == 'POST':
-            form = PublicacaoForm(request.POST, request.FILES, instance=publicacao )
-            if form.is_valid():
-                form.save()
-                return redirect('publicacoes')
-        else:
-            form =PublicacaoForm(instance=publicacao)
-    
-        return render(request, 'publicacoes/form.html',{'from':form})
-
-    def excluir_publicacao(request, pk):
-        publicacao = get_object_or_404(Publicacao, pk=pk)
-        if request.method == 'POST':
-            publicacao.delete()
+def criar_publicacao(request):
+    if  request.method == 'POST':
+        form = PublicacaoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
             return redirect('lista_publicacoes')
-        return render(request, 'publicacoes/confimar_exclusao.html',{'publicacao':publicacao})
+    else :
+        form = PublicacaoForm()
+    return render(request, 'publicacoes/form.html',{'form': form})
+
+def editar_publicacao(request, pk):
+    publicacao = get_object_or_404(publicacao, pk=pk)
+    if request.method == 'POST':
+        form = PublicacaoForm(request.POST, request.FILES, instance=publicacao )
+        if form.is_valid():
+            form.save()
+            return redirect('publicacoes')
+    else:
+        form =PublicacaoForm(instance=publicacao)
+
+    return render(request, 'publicacoes/form.html',{'from':form})
+
+def excluir_publicacao(request, pk):
+    publicacao = get_object_or_404(Publicacao, pk=pk)
+    if request.method == 'POST':
+        publicacao.delete()
+        return redirect('lista_publicacoes')
+    return render(request, 'publicacoes/confimar_exclusao.html',{'publicacao':publicacao})
 
 @login_required  # Garante que apenas usuários autenticados acessem
 def TemplateView(request):
