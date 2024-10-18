@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Postagens{% endblock %}
+
+{% block content %}
+    <h1>Lista de Postagens</h1>
+    <div class="row">
+        {% for post in postagens %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.titulo }}</h5>
+                        <p class="card-text">{{ post.conteudo|truncatewords:20 }}</p>
+                        <a href="{% url 'detalhes_postagem' post.id %}" class="btn btn-primary">Leia mais</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Publicado em {{ post.data_criacao }} | Curtidas: {{ post.curtidas }}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Não há postagens disponíveis.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
