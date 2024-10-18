@@ -1,0 +1,11 @@
+<!-- templates/pedido_confirmado.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Pedido Confirmado!</h4>
+        <p>Seu pedido foi realizado com sucesso. Em breve você receberá uma confirmação.</p>
+        <hr>
+        <a href="{% url 'pizza_list' %}" class="btn btn-primary">Voltar para o Menu</a>
+    </div>
+{% endblock %}

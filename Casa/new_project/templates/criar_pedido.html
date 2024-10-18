@@ -1,0 +1,36 @@
+<!-- templates/criar_pedido.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header bg-danger text-white">
+            <h2>Faça seu Pedido</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    {% for pizza in pizzas %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <img src="{{ pizza.imagem.url }}" class="card-img-top" alt="{{ pizza.sabor }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ pizza.get_tamanho_display }} {{ pizza.sabor }}</h5>
+                                    <p class="card-text">Valor: R$ {{ pizza.valor }}</p>
+                                    <div class="form-group">
+                                        <label for="id_pizza_{{ pizza.id }}">Quantidade:</label>
+                                        {% with field_name="pizza_"|add:pizza.id|stringformat:"s" %}
+                                            
+                                        {% endwith %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-success">Confirmar Pedido</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

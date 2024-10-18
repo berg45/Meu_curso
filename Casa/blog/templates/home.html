@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- User Profile Sidebar -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ user.profile_image.url }}" class="card-img-top" alt="Profile Picture">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text">Logged in as {{ user.email }}</p>
+                    <p><strong>Total Likes:</strong> {{ total_likes }}</p>
+                    <p><strong>Total Dislikes:</strong> {{ total_dislikes }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Posts Section -->
+        <div class="col-md-8">
+            {% for post in posts %}
+            <div class="card mb-4">
+                <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                    <p><small class="text-muted">Posted by {{ post.author.username }} on {{ post.created_at }}</small></p>
+                    
+                    <!-- Like and Dislike Buttons -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <!-- Botão de Like -->
+                            <button class="btn btn-outline-secondary like-btn" data-post-id="{{ post.id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{% if post.user_liked %}#FF0000{% else %}#FFFFFF{% endif %}" class="icon">
+                                    <!-- Conteúdo do seu SVG aqui (flecha_cima_cheia.svg) -->
+                                </svg>
+                                {{ post.likes }}
+                            </button>
+                    
+                            <!-- Botão de Dislike -->
+                            <button class="btn btn-outline-secondary dislike-btn" data-post-id="{{ post.id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{% if post.user_disliked %}#FF0000{% else %}#FFFFFF{% endif %}" class="icon">
+                                    <!-- Conteúdo do seu SVG aqui (flecha_baixo_cheia.svg) -->
+                                </svg>
+                                {{ post.dislikes }}
+                            </button>
+                        </div>
+                    </div>
+                    
+                        <div>
+                            <button class="btn btn-link" data-bs-toggle="collapse" href="#comments-{{ post.id }}" role="button">
+                                <img src="{% static 'icons/chat.svg' %}"> {{ post.comments.count }} Comments
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div class="collapse" id="comments-{{ post.id }}">
+                        <ul class="list-group list-group-flush">
+                            {% for comment in post.comments.all %}
+                            <li class="list-group-item">
+                                <strong>{{ comment.user.username }}:</strong> {{ comment.text }}
+                                {% if comment.user == user %}
+                                <!-- Edit/Delete Buttons for User's Own Comments -->
+                                <div class="float-end">
+                                    <a href="#" class="edit-comment" data-comment-id="{{ comment.id }}">
+                                        <img src="{% static 'icons/lapis_editar.svg' %}" alt="Edit">
+                                    </a>
+                                    <a href="#" class="delete-comment" data-comment-id="{{ comment.id }}">
+                                        <img src="{% static 'icons/lixeira_deletar.svg' %}" alt="Delete">
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                        <!-- New Comment Form -->
+                        <form class="mt-2" method="POST" action="{% url 'add_comment' post.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" name="comment" class="form-control" placeholder="Write a comment..." required>
+                                <button class="btn btn-outline-success" type="submit">Comentar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript for handling likes and dislikes dynamically
+    document.querySelectorAll('.like-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            let postId = this.getAttribute('data-post-id');
+            // Make an AJAX call to update the like count
+        });
+    });
+
+    document.querySelectorAll('.dislike-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            let postId = this.getAttribute('data-post-id');
+            // Make an AJAX call to update the dislike count
+        });
+    });
+
+    document.querySelectorAll('.delete-comment').forEach(btn => {
+        btn.addEventListener('click', function() {
+            let commentId = this.getAttribute('data-comment-id');
+            // Make an AJAX call to delete the comment
+        });
+    });
+</script>
+{% endblock %}

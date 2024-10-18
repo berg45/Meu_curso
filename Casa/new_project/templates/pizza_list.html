@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="mb-4">Lista de Pizzas</h2>
+    <div class="table-response">
+        <table class="table table-striped">
+            <thead class="table-danger">
+                <tr>
+                    <th scope="col">Sabor</th>
+                    <th scope="col">Tamanho</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Imagem</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pizza in pizzas %}
+                    <tr>
+                        <td>{{ pizza.sabor }}</td>
+                        <td>{{ pizza.get_tamanho_display }}</td>
+                        <td>{{ pizza.valor }}</td>
+                        <td>
+                            {% if pizza.imagem %}
+                                <img src="{{ pizza.imagem.url }}" alt="Imagem da pizza" width="100">
+                            {% else %}
+                                Sem imagem
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'pizza_detail' pizza.pk %}" class="btn btn-info btn-sm">Detalhes</a>
+                            <a href="{% url 'pizza_edit' pizza.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                            <form action="{% url 'pizza_delete' pizza.pk %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir esta pizza?');">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center">Nenhuma pizza cadastrada.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </tbody>
+        </table>
+    </div>
+ 
+{% endblock %}
