@@ -6,22 +6,24 @@ from .models import Post, Comentario
 from .forms import ComentarioForm, PostForm
 from django.contrib.auth.decorators import login_required
 
-
-@login_required 
+@login_required
 def dashboard(request):
     total_postagens = Post.objects.count()
-    ultimas_postagens =  Post.objects.all().order_by('-data_criacao')
+    ultimas_postagens = Post.objects.all().order_by('-data_criacao')[:6]  # Exibe as 6 postagens mais recentes
 
-    user = {
-        'username': request.user.username,
-        'profile_picture': request.user.profile.profile_picture.url if hasattr(request.user, 'profile') else None
-    }
+    # Verifica se o usuário tem um perfil com foto
+    profile_picture = None
+    if hasattr(request.user, 'profile') and request.user.profile.profile_picture:
+        profile_picture = request.user.profile.profile_picture.url
 
     return render(request, 'dashboard.html', {
         'total_postagens': total_postagens,
         'ultimas_postagens': ultimas_postagens,
-        'user': user,
+        'profile_picture': profile_picture,  # Passa a foto de perfil se existir
     })
+
+
+
 
 # app/views.py
 

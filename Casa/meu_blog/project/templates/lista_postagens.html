@@ -1,25 +1,55 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Postagens{% endblock %}
 
 {% block content %}
-    <h1>Lista de Postagens</h1>
-    <div class="row">
-        {% for post in postagens %}
-            <div class="col-md-4 mb-3">
-                <div class="card">
+<div class="container">
+    <div class="row mb-4">
+        <!-- Informações do Usuário ocupando 2 colunas -->
+        <div class="col-md-2">
+            {% if user.is_authenticated %}
+                <div class="card text-center">
                     <div class="card-body">
-                        <h5 class="card-title">{{ post.titulo }}</h5>
-                        <p class="card-text">{{ post.conteudo|truncatewords:20 }}</p>
-                        <a href="{% url 'detalhes_postagem' post.id %}" class="btn btn-primary">Leia mais</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Publicado em {{ post.data_criacao }} | Curtidas: {{ post.curtidas }}
+                        <h5 class="card-title">{{ user.username }}</h5>
+                        {% if profile_picture %}
+                            <img src="{{ profile_picture }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                        {% else %}
+                            <img src="{% static 'imagens/perfil.png' %}" alt="Default Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                        {% endif %}
                     </div>
                 </div>
+            {% else %}
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Você não está logado.</h5>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Postagens ocupando 10 colunas -->
+        <div class="col-md-10">
+            <h1>Lista de Postagens</h1>
+            <div class="row">
+                {% for post in postagens %}
+                    <div class="col-md-8 mb-3">
+                        <div class="card">
+                            <img src="{{ post.imagem.url }}" class="card-img-top" alt="{{ post.titulo }}" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.titulo }}</h5>
+                                <p class="card-text">{{ post.conteudo|truncatewords:20 }}</p>
+                                <a href="{% url 'detalhes_postagem' post.id %}" class="btn btn-primary">Leia mais</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Publicado em {{ post.data_criacao }} | Curtidas: {{ post.curtidas }}
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>Não há postagens disponíveis.</p>
+                {% endfor %}
             </div>
-        {% empty %}
-            <p>Não há postagens disponíveis.</p>
-        {% endfor %}
+        </div>
     </div>
+</div>
 {% endblock %}
