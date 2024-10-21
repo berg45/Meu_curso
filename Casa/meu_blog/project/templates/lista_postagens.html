@@ -38,10 +38,33 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.titulo }}</h5>
                                 <p class="card-text">{{ post.conteudo|truncatewords:20 }}</p>
-                                <a href="{% url 'detalhes_postagem' post.id %}" class="btn btn-primary">Leia mais</a>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <!-- Ícones de comentário e curtida -->
+                                    <div>
+                                        <i class="far fa-heart me-2" style="cursor: pointer;" id="curtida-icon-{{ post.id }}" onclick="adicionarCurtida('{{ post.id }}', this)"></i> <!-- Ícone de coração -->
+                                        <i class="far fa-comment me-2" style="cursor: pointer;" onclick="toggleComentarioForm('{{ post.id }}')"></i> <!-- Ícone de comentário -->
+                                    </div>
+                                    
+                                    <!-- Botão Leia Mais -->
+                                    <a href="{% url 'detalhes_postagem' post.id %}" class="btn btn-primary">Leia mais</a>
+                                </div>
+                                
+                                <!-- Formulário de comentário (inicialmente oculto) -->
+                                <div id="comentario-form-{{ post.id }}" class="mt-3" style="display: none;">
+                                    <form method="POST" onsubmit="return enviarComentario(event, '{{ post.id }}');">
+                                        {% csrf_token %}
+                                        <div class="mb-2">
+                                            <textarea name="conteudo" class="form-control" rows="3" placeholder="Adicione seu comentário..."></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-sm">Enviar</button>
+                                    </form>
+                                    <div id="comentarios-{{ post.id }}" class="mt-2"></div> <!-- Div para exibir novos comentários -->
+                                </div>
                             </div>
+                            
                             <div class="card-footer text-muted">
-                                Publicado em {{ post.data_criacao }} | Curtidas: {{ post.curtidas }}
+                                Publicado em {{ post.data_criacao }} | Curtidas: <span id="curtidas-count-{{ post.id }}">{{ post.curtidas }}</span>
                             </div>
                         </div>
                     </div>
@@ -52,4 +75,59 @@
         </div>
     </div>
 </div>
+
+<script>
+    function enviarComentario(event, postId) {
+        event.preventDefault(); // Impede o envio do formulário padrão
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch(`{% url 'adicionar_comentario' 0 %}`.replace('0', postId), {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest', // Indica que a requisição é AJAX
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Espera uma resposta JSON
+            }
+            throw new Error('Erro ao enviar o comentário');
+        })
+        .then(data => {
+            const comentariosDiv = document.getElementById(`comentarios-${postId}`);
+            const novoComentario = document.createElement('div');
+            novoComentario.classList.add('border', 'p-2', 'mb-2');
+            novoComentario.innerHTML = `<strong>${data.usuario}</strong> diz:<p>${data.conteudo}</p><small>${data.data_criacao}</small>`;
+            comentariosDiv.appendChild(novoComentario);
+            form.reset(); // Limpa o formulário
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+        return false; // Para garantir que o formulário não seja enviado normalmente
+    }
+
+    function toggleComentarioForm(postId) {
+        const comentarioForm = document.getElementById(`comentario-form-${postId}`);
+        comentarioForm.style.display = comentarioForm.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function adicionarCurtida(postId, element) {
+        // Adiciona uma curtida e muda a cor do ícone
+        const curtasCountElement = document.getElementById(`curtidas-count-${postId}`);
+        const currentCount = parseInt(curtasCountElement.textContent, 10);
+        curtasCountElement.textContent = currentCount + 1; // Incrementa o contador
+
+        // Altera a classe do ícone para ficar vermelho
+        if (element.classList.contains('far')) {
+            element.classList.remove('far');
+            element.classList.add('fas', 'text-danger'); // Muda para o ícone preenchido e vermelho
+        }
+    }
+</script>
+
 {% endblock %}

@@ -24,12 +24,14 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
+    path('dashboard', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
     path('register/', include('autentication.urls')),  # URL para registro
     path('login/', include('autentication.urls')),     # URL para login
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-    path('usuarios/', include('app.urls')),  # URLs do app de blog
+    path('', include('app.urls')),  # URLs do app de blog
    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

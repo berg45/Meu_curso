@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from .models import Post, Comentario
 from .forms import ComentarioForm, PostForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 @login_required
 def dashboard(request):
@@ -82,5 +83,23 @@ def post_delete(request, pk):
         post.delete()
         return redirect('lista_postagens')
     return render(request, 'post_confirm_delete.html', {'post': post})
+
+
+
+
+def adicionar_comentario(request, post_id):
+    if request.method == 'POST':
+        post = get_object_or_404(Post, id=post_id)
+        conteudo = request.POST.get('conteudo')
+        if conteudo:
+            comentario = Comentario.objects.create(usuario=request.user, post=post, conteudo=conteudo)
+            return JsonResponse({
+                'usuario': comentario.usuario.username,
+                'conteudo': comentario.conteudo,
+                'data_criacao': comentario.data_criacao.strftime('%d/%m/%Y %H:%M:%S'),  # Formatação da data
+            })
+    return JsonResponse({'error': 'Método não permitido'}, status=405)
+
+
 
 
