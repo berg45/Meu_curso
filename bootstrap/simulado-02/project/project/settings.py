@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-59yn2-q^88c_hhn(3af_e1ko!z!e_cs-rzb2uobl^q^eg#lq=c'
+SECRET_KEY = 'django-insecure-ok)qj-^70y(nau#o*zot3#0t@oum!rf)11!+y$f)i%%n()q3$0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,9 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'autentication',
-    'app',
-
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -66,8 +63,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'app.global.post',
-              
             ],
         },
     },
@@ -127,12 +122,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
-LOGOUT_URL = 'logout'
-LOGIN_URL = 'login'
+LOGIN_URL = 'login' # Se o usuário tentar acessar uma página protegida sem estar logado

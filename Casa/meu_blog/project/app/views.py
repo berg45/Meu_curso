@@ -2,14 +2,15 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy    
-from .models import Post, Comentario
+from .models import Post, Comentario, Curtida
 from .forms import ComentarioForm, PostForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 @login_required
 def dashboard(request):
-    total_postagens = Post.objects.count()
+    total_postagens = Post.objects.first()
     ultimas_postagens = Post.objects.all().order_by('-data_criacao')[:6]  # Exibe as 6 postagens mais recentes
 
     # Verifica se o usuário tem um perfil com foto
@@ -99,6 +100,21 @@ def adicionar_comentario(request, post_id):
                 'data_criacao': comentario.data_criacao.strftime('%d/%m/%Y %H:%M:%S'),  # Formatação da data
             })
     return JsonResponse({'error': 'Método não permitido'}, status=405)
+
+@require_POST
+def adicionar_curtida(request, post_id):
+    if request.user.is_authenticated:
+        post = Post.objects.get(id=post_id)
+        
+        # Tente adicionar uma nova curtida
+        curtida, created = Curtida.objects.get_or_create(usuario=request.user, post=post)
+        
+        if created:
+            return JsonResponse({'curtidas': post.curtidas.count() + 1})  # Retorna o novo total de curtidas
+        else:
+            return JsonResponse({'error': 'Você já curtiu esta postagem'}, status=400)
+
+    return JsonResponse({'error': 'Usuário não autenticado'}, status=403)
 
 
 

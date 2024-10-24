@@ -9,23 +9,27 @@
         <!-- Informações do Usuário ocupando 2 colunas -->
         <div class="col-md-2">
             {% if user.is_authenticated %}
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.username }}</h5>
-                        {% if profile_picture %}
-                            <img src="{{ profile_picture }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
-                        {% else %}
-                            <img src="{% static 'imagens/perfil.png' %}" alt="Default Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
-                        {% endif %}
-                    </div>
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    {% if profile_picture %}
+                        <img src="{{ profile_picture }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                    {% else %}
+                        <img src="{% static 'imagens/perfil.png' %}" alt="Default Profile Picture" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                    {% endif %}
+                    
                 </div>
+            </div>
             {% else %}
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Você não está logado.</h5>
+                        <a href="{% url 'login' %}" class="btn btn-primary mt-3">Entrar</a> <!-- Link para login -->
                     </div>
                 </div>
             {% endif %}
+        
+            
         </div>
 
         <!-- Últimas postagens ocupando 10 colunas -->

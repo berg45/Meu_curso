@@ -32,6 +32,8 @@
             <h1>Lista de Postagens</h1>
             <div class="row">
                 {% for post in postagens %}
+
+
                     <div class="col-md-8 mb-3">
                         <div class="card">
                             <img src="{{ post.imagem.url }}" class="card-img-top" alt="{{ post.titulo }}" style="height: 200px; object-fit: cover;">
@@ -64,7 +66,7 @@
                             </div>
                             
                             <div class="card-footer text-muted">
-                                Publicado em {{ post.data_criacao }} | Curtidas: <span id="curtidas-count-{{ post.id }}">{{ post.curtidas }}</span>
+                                Publicado em {{ post.data_criacao }} | Curtidas: <span id="curtidas-count-{{ post.id }}">{{ post.curtidas|default:0 }}</span>
                             </div>
                         </div>
                     </div>
@@ -117,17 +119,37 @@
     }
 
     function adicionarCurtida(postId, element) {
-        // Adiciona uma curtida e muda a cor do ícone
-        const curtasCountElement = document.getElementById(`curtidas-count-${postId}`);
-        const currentCount = parseInt(curtasCountElement.textContent, 10);
-        curtasCountElement.textContent = currentCount + 1; // Incrementa o contador
-
-        // Altera a classe do ícone para ficar vermelho
-        if (element.classList.contains('far')) {
-            element.classList.remove('far');
-            element.classList.add('fas', 'text-danger'); // Muda para o ícone preenchido e vermelho
-        }
+        fetch(`{% url 'adicionar_curtida' 0 %}`.replace('0', postId), {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': '{{ csrf_token }}', // Envie o token CSRF
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.json().then(err => { throw new Error(err.error); });
+            }
+        })
+        .then(data => {
+            const curtidasCountElement = document.getElementById(`curtidas-count-${postId}`);
+            curtidasCountElement.textContent = data.curtidas; // Atualiza o contador de curtidas
+    
+            // Altera a classe do ícone para marcar como curtido
+            if (element.classList.contains('far')) {
+                element.classList.remove('far');
+                element.classList.add('fas', 'text-danger'); // Ícone preenchido e vermelho
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alert(error.message); // Exibe a mensagem de erro para o usuário
+        });
     }
+    
+    
 </script>
 
 {% endblock %}
