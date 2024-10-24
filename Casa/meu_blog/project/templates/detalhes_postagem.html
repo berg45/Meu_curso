@@ -13,14 +13,12 @@
             <h1 class="card-title">{{ post.titulo }}</h1>
             <p class="card-text">{{ post.conteudo }}</p>
             <p><strong>Publicado em:</strong> {{ post.data_criacao }}</p>
-            <p><strong>Curtidas:</strong> {{ post.curtidas }}</p>
+            <p><strong>Curtidas:</strong> <span id="curtidas-count-{{ post.id }}">{{ post.curtidas.count }}</span></p>
 
-            <form method="POST">
+            <form method="POST" action="{% url 'adicionar_curtida' post.id %}"> <!-- Adicione uma URL para adicionar a curtida -->
                 {% csrf_token %}
                 <i class="far fa-heart me-2" style="cursor: pointer;" id="curtida-icon-{{ post.id }}" onclick="adicionarCurtida('{{ post.id }}', this)"></i>
             </form>
-            
-
 
             <h3 class="mt-4">Comentários:</h3>
             {% for comentario in comentarios %}
