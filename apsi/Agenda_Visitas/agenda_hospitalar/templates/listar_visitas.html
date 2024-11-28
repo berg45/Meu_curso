@@ -8,19 +8,20 @@
     <div class="col-12 col-md-5">
         
         <h1>Protocolos de Visitas Hospitalares</h1>
-        <li><strong>Atenção:</strong>Para garantir a segurança dos pacientes, visitantes e profissionais de saùde, é indispensavel seguir as orientações a baixo.</li>
+        <p><strong>Atenção:</strong>Para garantir a segurança dos pacientes, visitantes e profissionais de saùde, é indispensavel seguir as orientações a baixo.</p>
 
         <h3 class="text-center mt-2">Regras Para Visitas</h3>
-        <ul>
-            <li><strong>máscaras:</strong>Todos os visitantes devem usar mascara.</li>
-        </ul>
+        
+        <p><strong>Uso obrigatório de máscaras:</strong>Todos os visitantes devem usar mascara durantes todo o periodo de permanencia no hospital.</p>
+        <p><strong>Duração Limitada:</strong>Cada visita terá o tempo máximo de<strong> 30 minutos.</strong></p>
+        
         
     </div>
 
   
     <div class="col-12 col-md-6">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
+        
+            <div class="card-header bg-primary text-center text-white">
                 <h2>Visitas Agendadas</h2>
             </div>
             <div class="card-body">
@@ -48,7 +49,7 @@
                 {% endif %}
                 <a href="{% url 'agendar_visita' %}" class="btn btn-success">Agendar Nova Visita</a>
             </div>
-        </div>
+        
     </div>
 </div>
 {% endblock %}

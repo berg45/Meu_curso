@@ -14,7 +14,7 @@
             {{ form.visitante }}
             
             {{ form.data_hora.label_tag }}
-            
+            {{ form.data_hora|add_class:"form-control datetimepicker" }}
             
             <button type="submit" class="btn btn-primary mt-3">Agendar</button>
         </form>
