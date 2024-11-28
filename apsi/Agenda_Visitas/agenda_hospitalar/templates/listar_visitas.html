@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Visitas Agendadas{% endblock %}
+
+{% block content %}
+<div class="row">
+   
+    <div class="col-12 col-md-5">
+        
+            <h1>Protocolos de Visitas Hospitalares</h1>
+          
+        
+    </div>
+
+  
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2>Visitas Agendadas</h2>
+            </div>
+            <div class="card-body">
+                {% if visitas %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Visitante</th>
+                                <th>Data e Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for visita in visitas %}
+                                <tr>
+                                    <td>{{ visita.visitante.nome }}</td>
+                                    <td>{{ visita.data_hora }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="alert alert-warning">
+                        Nenhuma visita agendada.
+                    </div>
+                {% endif %}
+                <a href="{% url 'agendar_visita' %}" class="btn btn-success">Agendar Nova Visita</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

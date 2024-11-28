@@ -19,7 +19,7 @@ class Clientes(models.Model):
         cpf_cnpj = models.CharField(max_length=150)
         email = models.EmailField()
         cep = models.TextField(max_length=8)
-        endereço = models.TextField(max_length=150)
+        endereco = models.TextField(max_length=150)
         bairro = models.TextField(max_length=150)
         numero = models.TextField(max_length=5)
         cidade = models.TextField(max_length=30)

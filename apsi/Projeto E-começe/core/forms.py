@@ -11,7 +11,7 @@ class ProdutoForm(forms.ModelForm):
 class ClientesForm(ModelForm):
     class Meta:
         model = Clientes
-        fields = ['nome', 'cpf_cnpj', 'email', 'cep', 'endereço', 'numero', 'bairro', 'cidade', 'estado']
+        fields = ['nome', 'cpf_cnpj', 'email', 'cep', 'endereco', 'numero', 'bairro', 'cidade', 'estado']
 
  
    

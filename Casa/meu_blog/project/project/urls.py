@@ -25,12 +25,11 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
-    path('register/', include('autentication.urls')),  # URL para registro
-    path('login/', include('autentication.urls')),     # URL para login
+    path('register/', include('autentication.urls')), 
+    path('login/', include('autentication.urls')),     
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-    path('', include('app.urls')),  # URLs do app de blog
-    
+    path('', include('app.urls')),  
    
 ]
 if settings.DEBUG:

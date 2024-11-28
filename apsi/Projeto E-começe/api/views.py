@@ -45,31 +45,41 @@ def remover_carrinho(request, produto_id):
 
 def finalizar_compra(request, cliente_id):
     cliente = get_object_or_404(Clientes, id=cliente_id)
-    
+
     if request.method == 'POST':
-      
-        produtos = Produto.objects.all() 
+        # Aqui você deve pegar os produtos que estão no carrinho
+        # Supondo que você tenha uma forma de armazenar o carrinho na sessão ou em um modelo
+        cart_items = request.session.get('cart', {})  # Supondo que o carrinho esteja armazenado na sessão
+        
         compra = Compra(cliente=cliente)
         compra.save()
-        for produto in produtos:
-            ItemCompra.objects.create(compra=compra, produto=produto, quantidade=1)  
-        return redirect('compra_finalizada', compra_id=compra.id)
-    
-    return render(request, 'usuario/finalizacao_compra.html', {'cliente': cliente})
-
-
-#class FinalizacaoCompraView(TemplateView):
-    template_name = 'usuario/finalizacao_compra.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        compra = get_object_or_404(Compra, pk=self.kwargs['pk'])
-        cliente = compra.cliente  # Assumindo que a compra tem um campo relacionado ao cliente
-
         
-        context['compra'] = compra
-        context['cliente'] = cliente
-       
-        return context
+        total_compra = 0
+        for produto_id, item in cart_items.items():
+            produto = get_object_or_404(Produto, id=produto_id)
+            quantidade = item['quantity']
+            subtotal = produto.valorComDesconto * quantidade  # Alterado para usar valorComDesconto
+            total_compra += subtotal
+            
+            ItemCompra.objects.create(compra=compra, produto=produto, quantidade=quantidade)
+
+        return redirect('compra_finalizada', compra_id=compra.id)  # Remova o total aqui
+     
+    return render(request, 'usuario/compra_finalizada.html', {'cliente': cliente})
+
+
+
+def compra_finalizada(request, compra_id):
+    compra = get_object_or_404(Compra, id=compra_id)
+    itens_compra = ItemCompra.objects.filter(compra=compra)
+    total = sum(item.produto.preco * item.quantidade for item in itens_compra)
+
+    return render(request, 'usuario/compra_finalizada.html', {
+        'cliente': compra.cliente,
+        'cart': itens_compra,
+        'total': total
+    })
+
+
 
 

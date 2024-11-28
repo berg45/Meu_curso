@@ -15,7 +15,7 @@
             <p><strong>Publicado em:</strong> {{ post.data_criacao }}</p>
             <p><strong>Curtidas:</strong> <span id="curtidas-count-{{ post.id }}">{{ post.curtidas.count }}</span></p>
 
-            <form method="POST" action="{% url 'adicionar_curtida' post.id %}"> <!-- Adicione uma URL para adicionar a curtida -->
+            <form method="POST" action="{% url 'adicionar_curtida' post.id %}"> 
                 {% csrf_token %}
                 <i class="far fa-heart me-2" style="cursor: pointer;" id="curtida-icon-{{ post.id }}" onclick="adicionarCurtida('{{ post.id }}', this)"></i>
             </form>

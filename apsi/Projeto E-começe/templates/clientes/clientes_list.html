@@ -19,24 +19,30 @@
             </tr>
         </thead>
         <tbody>
-            {% for cliente in cliente %}
-            <tr>
-                <td>{{ cliente.nome }}</td>
-                <td>{{ cliente.cpf_cnpj }}</td>
-                <td>{{ cliente.cep }}</td>
-                <td>{{ cliente.endereço }}</td>
-                <td>{{ cliente.bairro }}</td>
-                <td>{{ cliente.numero }}</td>
-                <td>{{ cliente.cidade }}</td>
-                <td>{{ cliente.estado }}</td>
-                <td>
+            {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.cpf_cnpj }}</td>
                    
-                    <a href="{% url 'finalizacao_compra' cliente.id %}" class="btn btn-success btn-sm">OK </a>
-                    <a href="{% url 'cliente_detail' cliente.id %}" class="btn btn-warning btn-sm">Detalhes</a>
-                    <a href="{% url 'cliente_delete' cliente.id %}" class="btn btn-danger btn-sm">Excluir</a>
-                </td>
-            </tr>
+                    <td>{{ cliente.cep }}</td>
+                    <td>{{ cliente.endereco }}</td>  <!-- Usar nome correto do campo -->
+                    <td>{{ cliente.bairro }}</td>
+                    <td>{{ cliente.numero }}</td>
+                    <td>{{ cliente.cidade }}</td>
+                    <td>{{ cliente.estado }}</td>
+                    <td>
+                        <a href="{% url 'finalizacao_compra' cliente.id %}" class="btn btn-success btn-sm">OK</a>
+                        <a href="{% url 'cliente_detail' cliente.id %}" class="btn btn-warning btn-sm">Detalhes</a>
+                        <a href="{% url 'cliente_delete' cliente.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="9">Nenhum cliente cadastrado.</td>
+                </tr>
             {% endfor %}
+
+        
         </tbody>
     </table>
 </div>

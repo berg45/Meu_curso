@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequência de {{ aluno.nome }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container my-5">
+    <!-- Cabeçalho -->
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center">Frequência de {{ aluno.nome }}</h1>
+            <div class="text-center my-3">
+                <a href="{% url 'frequencia:marcar_presenca' aluno.id %}" class="btn btn-primary">
+                    Marcar Presença
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Histórico de Presenças -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>Histórico de Presenças</h2>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for presenca in presencas %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ presenca.data }}</span>
+                    <span class="badge {% if presenca.presente %}badge-success{% else %}badge-danger{% endif %}">
+                        {{ "Presente" if presenca.presente else "Ausente" }}
+                    </span>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center">
+                    <em>Sem registros de presença.</em>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<!-- Bootstrap JS e Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
