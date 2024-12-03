@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar Enquete{% endblock %}
+
+{% block content %}
+<h1>Criar Nova Enquete</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ poll_form.as_p }}
+    </div>
+    <h4>Opções</h4>
+    {% for form in option_forms %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Criar Enquete</button>
+    <a href="{% url 'poll_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

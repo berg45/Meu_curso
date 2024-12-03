@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}Enquetes Disponíveis{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+
+        <!-- Primeira coluna -->
+        <div class="col-md-6">
+            <section class="text-center mb-5">
+                <h1 class="display-3 mb-4 fw-bold">Bem-vindo às Enquetes</h1>
+                <p class="lead"><strong>Aqui você pode participar de diversas enquetes e votar nas opções de sua escolha. Sua participação é importante!</strong></p>
+
+                <img src="https://cdn.prod.website-files.com/60ff690cd7b0537edb99a29a/63ffac2d381b1b288f2ad235_nova%20direita%20do%20Brasil.webp" alt="Imagem de Enquete" class="img-fluid rounded mb-4">
+            </section>
+
+            <section class="bg-light py-5">
+                <h3 class="text-center mb-4 fw-bold">Qual a importância da vitória de Trump nas próximas eleições brasileiras?</h3>
+                <img src="https://conteudo.imguol.com.br/c/noticias/53/2024/11/06/o-candidato-presidencial-republicano-e-ex-presidente-dos-eua-donald-trump-comparece-ao-seu-comicio-de-campanha-no-macomb-community-college-em-warren-michigan-eua-em-1-de-novembro-de-2024-1730897111648_v2_450x450.jpg.webp" 
+                     alt="Como votar" 
+                     class="img-fluid rounded d-block mx-auto">
+                <h5 class="text-center">'Brasil não é prioridade para EUA e relação não deve mudar com Trump', diz analista</h5>
+                <p>No entanto, não deve trazer grandes mudanças para as relações bilaterais especificamente, segundo o especialista em relações Brasil-EUA Carlos Gustavo Poggio, professor de Relações Internacionais da universidade Berea College, no Estado americano do Kentucky.</p>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/2022-09-07_Desfile_C%C3%ADvico-Militar_por_ocasi%C3%A3o_das_Comemora%C3%A7%C3%B5es_do_Bicenten%C3%A1rio_da_Independ%C3%AAncia_do_Brasil_-_52341366768_%28cropped%29.jpg" alt="Como votar" class="img-fluid rounded">
+                        <p class="mt-2">Será que Bolsonaro ficará elegível?</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="https://jornal.usp.br/wp-content/uploads/2022/03/20220330_pesquisa_eleitoral.jpg" alt="Como votar" class="img-fluid rounded">
+                        <p>Pesquisas eleitorais são importantes, mas precisam ser analisadas com cautela.<p>
+                        
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        
+        <div class="col-md-6">
+            <section>
+                <h2 class="text-center mb-4 fw-bold">Enquetes Disponíveis</h2>
+                
+                
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Pesquisas Atuais</h5>
+                        <div class="list-group">
+                            {% for poll in polls %}
+                            <a href="{% url 'poll_detail' poll.id %}" 
+                               class="list-group-item list-group-item-action" 
+                               style="background-color: #007BFF; color: white; border-radius: 5px; margin-bottom: 10px;">
+                                {{ poll.question }}
+                            </a>
+                            {% endfor %}
+                            <img src="https://www.tre-se.jus.br/imagens/imagens/tre-se-10-pesquisas-de-intencao-de-voto-ja-foram-registradas-em-sergipe/@@images/eb800397-c354-4398-8f94-8bbc2a77f4f1.jpeg" 
+                                 alt="Imagem de Enquete" 
+                                 class="img-fluid rounded mt-3">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-12 mt-5 d-flex align-items-start">
+                    <!-- Contêiner para alinhar horizontalmente a imagem e o texto -->
+                    <div class="me-3">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR17eu1xgKhROAfhGNUt0COTYeyV0H_CM2iVQ&s/400x300/400x300" 
+                             alt="Imagem de Enquete" 
+                             class="img-fluid rounded" 
+                             style="max-width: 150px;">
+                    </div>
+                    <div>
+                        <pclass="lead"><strong>
+                            O resultado do primeiro turno das eleições municipais materializou um cenário que era esboçado pelas principais 
+                            pesquisas de intenção de voto há algumas semanas: um crescimento significativo no número de prefeituras que serão 
+                            comandadas por legendas do chamado Centrão e da direita a partir de 2025.
+                        </strong></p>
+                    </div>
+                </div>
+                
+                    <h3 class="text-center mb-4 mt-5 fw-bold">A segurança das Urnas nas eleições brasileiras?</h3>
+                    <img src="https://imagens.ebc.com.br/W5QD__Z13q-MMDlstLpLomA0Pt8=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/lacracao-urnas-eletronicas_mcamgo_abr_210920221818-11.jpg?itok=8dz30J2c" 
+                         alt="Como votar" 
+                         class="img-fluid rounded d-block mx-auto">
+                    <h5 class="text-center mt-5">É Segura</h5>
+                    <p>Em todos os anos de eleições no Brasil, além dos acalorados debates entre os candidatos e suas propostas, sempre surge uma pergunta: a urna eletrônica é realmente segura? Essa questão mexe com o imaginário das pessoas e acende discussões na imprensa e nas redes sociais. Toda sorte de supostas fraudes e teorias conspiratórias surge nessa época. O fato é que a Justiça Eleitoral trabalha duro para garantir que a votação ocorra de forma segura,
+                         transparente e eficiente. E o sucesso e a qualidade desse trabalho podem ser conferidos pela população ao final de cada eleição.</p>
+                    <div class="row">
+                     
+                            
+                        
+                    </div>
+                
+                
+                
+                
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
