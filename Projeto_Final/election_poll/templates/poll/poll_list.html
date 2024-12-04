@@ -20,14 +20,14 @@
                 <img src="https://conteudo.imguol.com.br/c/noticias/53/2024/11/06/o-candidato-presidencial-republicano-e-ex-presidente-dos-eua-donald-trump-comparece-ao-seu-comicio-de-campanha-no-macomb-community-college-em-warren-michigan-eua-em-1-de-novembro-de-2024-1730897111648_v2_450x450.jpg.webp" 
                      alt="Como votar" 
                      class="img-fluid rounded d-block mx-auto">
-                <h5 class="text-center">'Brasil não é prioridade para EUA e relação não deve mudar com Trump', diz analista</h5>
+                <h5 class="text-center mt-5">'Brasil não é prioridade para EUA e relação não deve mudar com Trump', diz analista</h5>
                 <p>No entanto, não deve trazer grandes mudanças para as relações bilaterais especificamente, segundo o especialista em relações Brasil-EUA Carlos Gustavo Poggio, professor de Relações Internacionais da universidade Berea College, no Estado americano do Kentucky.</p>
                 <div class="row">
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-6 mt-5 text-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/2022-09-07_Desfile_C%C3%ADvico-Militar_por_ocasi%C3%A3o_das_Comemora%C3%A7%C3%B5es_do_Bicenten%C3%A1rio_da_Independ%C3%AAncia_do_Brasil_-_52341366768_%28cropped%29.jpg" alt="Como votar" class="img-fluid rounded">
                         <p class="mt-2">Será que Bolsonaro ficará elegível?</p>
                     </div>
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-6 mt-5 text-center">
                         <img src="https://jornal.usp.br/wp-content/uploads/2022/03/20220330_pesquisa_eleitoral.jpg" alt="Como votar" class="img-fluid rounded">
                         <p>Pesquisas eleitorais são importantes, mas precisam ser analisadas com cautela.<p>
                         
@@ -39,20 +39,22 @@
         
         <div class="col-md-6">
             <section>
-                <h2 class="text-center mb-4 fw-bold">Enquetes Disponíveis</h2>
-                
-                
-                
+                <h2 class="text-center mb-5 fw-bold">Enquetes Disponíveis</h2>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Pesquisas Atuais</h5>
                         <div class="list-group">
                             {% for poll in polls %}
-                            <a href="{% url 'poll_detail' poll.id %}" 
-                               class="list-group-item list-group-item-action" 
-                               style="background-color: #007BFF; color: white; border-radius: 5px; margin-bottom: 10px;">
-                                {{ poll.question }}
-                            </a>
+                            <div class="d-flex align-items-center mb-3">
+                                <a href="{% url 'poll_detail' poll.id %}" 
+                                   class="list-group-item list-group-item-action flex-grow-1" 
+                                   style="background-color: #007BFF; color: white; border-radius: 5px;">
+                                    {{ poll.question }}
+                                </a>
+                                <a href="{% url 'poll_detail' poll.id %}">
+                                    <button class="btn btn-success" style="margin-left: 10px;">Ver Pesquisa</button>
+                                </a>
+                            </div>
                             {% endfor %}
                             <img src="https://www.tre-se.jus.br/imagens/imagens/tre-se-10-pesquisas-de-intencao-de-voto-ja-foram-registradas-em-sergipe/@@images/eb800397-c354-4398-8f94-8bbc2a77f4f1.jpeg" 
                                  alt="Imagem de Enquete" 
@@ -61,22 +63,26 @@
                     </div>
                 </div>
                 
-                <div class="col-md-12 mt-5 d-flex align-items-start">
-                    <!-- Contêiner para alinhar horizontalmente a imagem e o texto -->
-                    <div class="me-3">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR17eu1xgKhROAfhGNUt0COTYeyV0H_CM2iVQ&s/400x300/400x300" 
-                             alt="Imagem de Enquete" 
-                             class="img-fluid rounded" 
-                             style="max-width: 150px;">
-                    </div>
-                    <div>
-                        <pclass="lead"><strong>
-                            O resultado do primeiro turno das eleições municipais materializou um cenário que era esboçado pelas principais 
-                            pesquisas de intenção de voto há algumas semanas: um crescimento significativo no número de prefeituras que serão 
-                            comandadas por legendas do chamado Centrão e da direita a partir de 2025.
-                        </strong></p>
+
+                <div class="row mt-2 p-3" style="background-color: #007BFF; color: white; border-radius: 5px; max-width: 100%; margin: auto;">
+                    <div class="col-md-12 d-flex align-items-center">
+                    
+                        <div class="me-3">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR17eu1xgKhROAfhGNUt0COTYeyV0H_CM2iVQ&s/400x300/400x300" 
+                                 alt="Imagem de Enquete" 
+                                 class="img-fluid rounded shadow" 
+                                 style="max-width: 150px;">
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="lead mb-0"><strong>
+                                O resultado do primeiro turno das eleições municipais materializou um cenário que era esboçado pelas principais 
+                                pesquisas de intenção de voto há algumas semanas: um crescimento significativo no número de prefeituras que serão 
+                                comandadas por legendas do chamado Centrão e da direita a partir de 2025.
+                            </strong></p>
+                        </div>
                     </div>
                 </div>
+                
                 
                     <h3 class="text-center mb-4 mt-5 fw-bold">A segurança das Urnas nas eleições brasileiras?</h3>
                     <img src="https://imagens.ebc.com.br/W5QD__Z13q-MMDlstLpLomA0Pt8=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/lacracao-urnas-eletronicas_mcamgo_abr_210920221818-11.jpg?itok=8dz30J2c" 
@@ -90,6 +96,7 @@
                             
                         
                     </div>
+
                 
                 
                 
